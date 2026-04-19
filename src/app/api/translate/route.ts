@@ -59,15 +59,7 @@ Rules:
       prompt: `Translate this JSON to ${targetLanguage}:\n${JSON.stringify(file, null, 2)}`,
     });
 
-    let translated: Record<string, any>;
-    try {
-      translated = JSON.parse(text);
-    } catch {
-      const match = text.match(/```(?:json)?\s*([\s\S]+?)\s*```/) ?? text.match(/(\{[\s\S]+\})/);
-      if (!match) throw new Error(`AI returned non-JSON response: ${text.slice(0, 200)}`);
-      translated = JSON.parse(match[1] ?? '{}');
-    }
-
+    const translated = text;
     return NextResponse.json({
       success: true,
       originalLanguage: 'auto-detected',
