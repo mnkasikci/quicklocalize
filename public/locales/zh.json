@@ -1,0 +1,82 @@
+{
+  "nav": {
+    "github": "GitHub",
+    "issues": "问题"
+  },
+  "hero": {
+    "title": "即刻本地化您的应用",
+    "description": "上传您的本地化文件，添加应用上下文，并使用LLM提供智能、语气感知的翻译。",
+    "githubButton": "GitHub 仓库"
+  },
+  "steps": {
+    "upload": "步骤 1：上传文件",
+    "translate": "步骤 2：添加上下文和翻译"
+  },
+  "upload": {
+    "dropActive": "将文件拖放到此处",
+    "dropIdle": "拖放文件到此处",
+    "browse": "或点击浏览（JSON / YAML）",
+    "invalidFile": "请上传有效的 JSON 或 YAML 文件",
+    "fileUploaded": "✓ 文件已上传：{filename}"
+  },
+  "form": {
+    "contextLabel": "应用上下文",
+    "contextHint": "(描述您的应用)",
+    "contextPlaceholder": "例如：这是一个适合 6-10 岁儿童的休闲益智游戏。使用友好、有趣的语言，在适当的地方添加表情符号。",
+    "quickTemplates": "快速模板：",
+    "languageLabel": "目标语言",
+    "translateButton": "翻译",
+    "translatingButton": "翻译中...",
+    "fillFields": "请填写所有字段",
+    "templates": {
+      "casualGame": "休闲移动游戏",
+      "b2b": "B2B 企业软件",
+      "educational": "教育应用",
+      "health": "健康和健身",
+      "ecommerce": "电子商务平台"
+    }
+  },
+  "results": {
+    "title": "翻译结果",
+    "targetLanguage": "目标语言",
+    "format": "格式",
+    "copy": "复制",
+    "copied": "已复制！",
+    "download": "下载",
+    "note": "您的翻译已准备好！复制或下载为 JSON 文件。文件保持原始结构和翻译值。"
+  },
+  "status": {
+    "awaitingTitle": "等待翻译...",
+    "awaitingHint": "填写表格并点击翻译",
+    "uploadTitle": "📁 上传文件以开始",
+    "uploadHint": "支持 JSON 和 YAML 格式"
+  },
+  "features": {
+    "title": "为什么选择 QuickLocalize？",
+    "contextAware": {
+      "title": "上下文感知",
+      "description": "提供应用上下文以获取语气适当的翻译"
+    },
+    "free": {
+      "title": "永久免费",
+      "description": "无需 API 密钥，无需付款。基于 Cloudflare 免费层构建。"
+    },
+    "fast": {
+      "title": "快速可靠",
+      "description": "由 Llama 3 在 Cloudflare 全球边缘网络上提供动力"
+    }
+  },
+  "footer": {
+    "copyright": "© 2024 QuickLocalize。保留所有权利。",
+    "madeWith": "为全球开发者制作，带有 ❤️",
+    "license": "MIT 许可证",
+    "selfTranslated": "🌍 本网站有多种语言版本 —— 使用 QuickLocalize 自身翻译。"
+  },
+  "errors": {
+    "uploadFirst": "请先上传文件",
+    "translationFailed": "翻译失败"
+  },
+  "language": {
+    "select": "选择语言"
+  }
+}

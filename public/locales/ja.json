@@ -1,0 +1,82 @@
+{
+  "nav": {
+    "github": "GitHub",
+    "issues": "問題"
+  },
+  "hero": {
+    "title": "アプリを瞬時にローカライズ",
+    "description": "ローカライズファイルをアップロードし、アプリのコンテキストを追加すると、LLMによって提供されるインテリジェントでトーンに応じた翻訳が得られます。",
+    "githubButton": "GitHub リポジトリ"
+  },
+  "steps": {
+    "upload": "ステップ 1: ファイルをアップロード",
+    "translate": "ステップ 2: コンテキストを追加して翻訳"
+  },
+  "upload": {
+    "dropActive": "ファイルをここにドロップ",
+    "dropIdle": "ファイルをここにドラッグ＆ドロップ",
+    "browse": "またはクリックして参照 (JSON / YAML)",
+    "invalidFile": "有効な JSON または YAML ファイルをアップロードしてください",
+    "fileUploaded": "✓ ファイルがアップロードされました: {filename}"
+  },
+  "form": {
+    "contextLabel": "アプリ コンテキスト",
+    "contextHint": "(アプリについて説明してください)",
+    "contextPlaceholder": "例: 6〜10 歳の子ども向けのカジュアルなパズル ゲームです。適切な場所にフレンドリーで遊び心のある言語と絵文字を使用してください。",
+    "quickTemplates": "クイック テンプレート:",
+    "languageLabel": "対象言語",
+    "translateButton": "翻訳",
+    "translatingButton": "翻訳中...",
+    "fillFields": "すべてのフィールドを入力してください",
+    "templates": {
+      "casualGame": "カジュアル モバイル ゲーム",
+      "b2b": "B2B エンタープライズ ソフトウェア",
+      "educational": "教育アプリ",
+      "health": "ヘルス＆フィットネス",
+      "ecommerce": "EC プラットフォーム"
+    }
+  },
+  "results": {
+    "title": "翻訳結果",
+    "targetLanguage": "対象言語",
+    "format": "形式",
+    "copy": "コピー",
+    "copied": "コピーしました!",
+    "download": "ダウンロード",
+    "note": "翻訳が完了しました。コピーするか JSON としてダウンロードできます。ファイルは元の構造を維持し、翻訳された値を含みます。"
+  },
+  "status": {
+    "awaitingTitle": "翻訳待ち...",
+    "awaitingHint": "フォームを入力し、翻訳をクリック",
+    "uploadTitle": "📁 ファイルをアップロードして開始",
+    "uploadHint": "JSON と YAML 形式をサポート"
+  },
+  "features": {
+    "title": "QuickLocalize を使用する理由",
+    "contextAware": {
+      "title": "コンテキスト対応",
+      "description": "アプリのコンテキストを提供して、トーンに適した翻訳を取得します"
+    },
+    "free": {
+      "title": "無料で使える",
+      "description": "API キーは不要、支払いは不要です。Cloudflare の無料プランを使用しています。"
+    },
+    "fast": {
+      "title": "高速かつ信頼性が高い",
+      "description": "Llama 3 を使用し、世界中の Cloudflare エッジ ネットワークで動作します"
+    }
+  },
+  "footer": {
+    "copyright": "© 2024 QuickLocalize. すべての権利予約。",
+    "madeWith": "開発者向けに ❤️ を込めて作成",
+    "license": "MIT ライセンス",
+    "selfTranslated": "🌍 このウェブサイトは複数の言語で利用可能です — QuickLocalize 自体を使用して翻訳しました。"
+  },
+  "errors": {
+    "uploadFirst": "まずファイルをアップロードしてください",
+    "translationFailed": "翻訳に失敗しました"
+  },
+  "language": {
+    "select": "言語を選択"
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "nav": {
+    "github": "GitHub",
+    "issues": "Problemas"
+  },
+  "hero": {
+    "title": "Localize Seu Aplicativo, Instantaneamente",
+    "description": "Faça upload dos arquivos de localização, adicione contexto sobre o seu aplicativo e obtenha traduções inteligentes e conscientes de tom, impulsionadas por LLMs.",
+    "githubButton": "Repositório GitHub"
+  },
+  "steps": {
+    "upload": "Etapa 1: Fazer Upload do Arquivo",
+    "translate": "Etapa 2: Adicionar Contexto e Traduzir"
+  },
+  "upload": {
+    "dropActive": "Solte o arquivo aqui",
+    "dropIdle": "Arraste e solte o arquivo aqui",
+    "browse": "ou clique para navegar (JSON / YAML)",
+    "invalidFile": "Por favor, faça upload de um arquivo JSON ou YAML válido",
+    "fileUploaded": "✓ Arquivo carregado: {filename}"
+  },
+  "form": {
+    "contextLabel": "Contexto do Aplicativo",
+    "contextHint": "(descreva o seu aplicativo)",
+    "contextPlaceholder": "por exemplo, Este é um jogo de puzzle casual para crianças com idades entre 6-10. Use linguagem amigável e divertida com emojis quando apropriado.",
+    "quickTemplates": "Modelos rápidos:",
+    "languageLabel": "Língua-Alvo",
+    "translateButton": "Traduzir",
+    "translatingButton": "Traduzindo...",
+    "fillFields": "Por favor, preencha todos os campos",
+    "templates": {
+      "casualGame": "Jogo Móvel Casual",
+      "b2b": "Software Empresarial B2B",
+      "educational": "Aplicativo Educacional",
+      "health": "Saúde e Fitness",
+      "ecommerce": "Plataforma de Comércio Eletrônico"
+    }
+  },
+  "results": {
+    "title": "Resultado da Tradução",
+    "targetLanguage": "Língua-Alvo",
+    "format": "Formato",
+    "copy": "Copiar",
+    "copied": "Copiado!",
+    "download": "Baixar",
+    "note": "Sua tradução está pronta! Copie-a ou baixe como JSON. O arquivo mantém a estrutura original com valores traduzidos."
+  },
+  "status": {
+    "awaitingTitle": "Aguardando tradução...",
+    "awaitingHint": "Preencha o formulário e clique em traduzir",
+    "uploadTitle": "📁 Faça upload de um arquivo para começar",
+    "uploadHint": "Suporta formatos JSON e YAML"
+  },
+  "features": {
+    "title": "Por que QuickLocalize?",
+    "contextAware": {
+      "title": "Consciente do Contexto",
+      "description": "Forneça contexto sobre o seu aplicativo para obter traduções apropriadas ao tom"
+    },
+    "free": {
+      "title": "Gratuito para Sempre",
+      "description": "Nenhuma chave de API, nenhum pagamento é necessário. Construído na camada gratuita do Cloudflare."
+    },
+    "fast": {
+      "title": "Rápido e Confiável",
+      "description": "Impulsionado por Llama 3 na rede de borda do Cloudflare em todo o mundo"
+    }
+  },
+  "footer": {
+    "copyright": "© 2024 QuickLocalize. Todos os direitos reservados.",
+    "madeWith": "Feito com ❤️ para desenvolvedores em todo o mundo",
+    "license": "Licença MIT",
+    "selfTranslated": "🌍 Este site está disponível em vários idiomas — traduzido usando o próprio QuickLocalize."
+  },
+  "errors": {
+    "uploadFirst": "Por favor, faça upload de um arquivo primeiro",
+    "translationFailed": "Tradução falhou"
+  },
+  "language": {
+    "select": "Selecione o idioma"
+  }
+}

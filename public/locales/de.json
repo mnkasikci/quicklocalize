@@ -1,0 +1,82 @@
+{
+  "nav": {
+    "github": "GitHub",
+    "issues": "Probleme"
+  },
+  "hero": {
+    "title": "Übersetzen Sie Ihre App, sofort",
+    "description": "Laden Sie Ihre Übersetzungsdateien hoch, fügen Sie Kontext über Ihre App hinzu und erhalten Sie intelligente, tonbewusste Übersetzungen, die von LLMs angetrieben werden.",
+    "githubButton": "GitHub-Repository"
+  },
+  "steps": {
+    "upload": "Schritt 1: Datei hochladen",
+    "translate": "Schritt 2: Kontext hinzufügen & übersetzen"
+  },
+  "upload": {
+    "dropActive": "Legen Sie Ihre Datei hier ab",
+    "dropIdle": "Ziehen Sie Ihre Datei hierher oder lassen Sie sie fallen",
+    "browse": "oder klicken Sie, um zu durchsuchen (JSON / YAML)",
+    "invalidFile": "Bitte laden Sie eine gültige JSON- oder YAML-Datei hoch",
+    "fileUploaded": "✓ Datei hochgeladen: {filename}"
+  },
+  "form": {
+    "contextLabel": "App-Kontext",
+    "contextHint": "(beschreiben Sie Ihre App)",
+    "contextPlaceholder": "z. B., Dies ist ein Casual-Spiel für Kinder im Alter von 6-10 Jahren. Verwenden Sie freundliche, spielerische Sprache mit Emojis, wo angemessen.",
+    "quickTemplates": "Schnellvorlagen:",
+    "languageLabel": "Zielsprache",
+    "translateButton": "Übersetzen",
+    "translatingButton": "Übersetzung...",
+    "fillFields": "Bitte füllen Sie alle Felder aus",
+    "templates": {
+      "casualGame": "Casual-Mobilspiel",
+      "b2b": "B2B-Unternehmenssoftware",
+      "educational": "Bildungs-App",
+      "health": "Gesundheit & Fitness",
+      "ecommerce": "E-Commerce-Plattform"
+    }
+  },
+  "results": {
+    "title": "Übersetzungsresultat",
+    "targetLanguage": "Zielsprache",
+    "format": "Format",
+    "copy": "Kopieren",
+    "copied": "Kopiert!",
+    "download": "Herunterladen",
+    "note": "Ihre Übersetzung ist fertig! Kopieren Sie sie oder laden Sie sie als JSON herunter. Die Datei behält die ursprüngliche Struktur mit übersetzten Werten bei."
+  },
+  "status": {
+    "awaitingTitle": "Warten auf Übersetzung...",
+    "awaitingHint": "Füllen Sie das Formular aus und klicken Sie auf Übersetzen",
+    "uploadTitle": "📁 Laden Sie eine Datei hoch, um zu beginnen",
+    "uploadHint": "Unterstützt JSON- und YAML-Formate"
+  },
+  "features": {
+    "title": "Warum QuickLocalize?",
+    "contextAware": {
+      "title": "Kontextbewusst",
+      "description": "Geben Sie Kontext über Ihre App an, um tonangemessene Übersetzungen zu erhalten"
+    },
+    "free": {
+      "title": "Kostenlos für immer",
+      "description": "Keine API-Schlüssel, keine Zahlung erforderlich. Aufgebaut auf Cloudflare-Free-Tier."
+    },
+    "fast": {
+      "title": "Schnell & zuverlässig",
+      "description": "Angetrieben von Llama 3 auf Cloudflare-Edge-Netzwerk weltweit"
+    }
+  },
+  "footer": {
+    "copyright": "© 2024 QuickLocalize. Alle Rechte vorbehalten.",
+    "madeWith": "Mit ❤️ für Entwickler weltweit erstellt",
+    "license": "MIT-Lizenz",
+    "selfTranslated": "🌍 Diese Website ist in mehreren Sprachen verfügbar — übersetzt mit QuickLocalize selbst."
+  },
+  "errors": {
+    "uploadFirst": "Bitte laden Sie zuerst eine Datei hoch",
+    "translationFailed": "Übersetzung fehlgeschlagen"
+  },
+  "language": {
+    "select": "Sprache auswählen"
+  }
+}

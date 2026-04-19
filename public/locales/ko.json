@@ -1,0 +1,82 @@
+{
+  "nav": {
+    "github": "깃허브",
+    "issues": "문제"
+  },
+  "hero": {
+    "title": "앱을 즉시 현지화하세요",
+    "description": "로컬라이제이션 파일을 업로드하고 앱에 대한 정보를 추가하여 LLMs에 의해 구동되는 지능형, 톤 인식 번역을 얻으세요.",
+    "githubButton": "깃허브 저장소"
+  },
+  "steps": {
+    "upload": "1단계: 파일 업로드",
+    "translate": "2단계: 컨텍스트 추가 및 번역"
+  },
+  "upload": {
+    "dropActive": "파일을 여기에 놓으세요",
+    "dropIdle": "파일을 끌어다 놓거나 브라우저에서 선택하세요",
+    "browse": "또는 브라우저에서 선택 (JSON / YAML)",
+    "invalidFile": "유효한 JSON 또는 YAML 파일을 업로드하세요",
+    "fileUploaded": "✓ 파일 업로드: {filename}"
+  },
+  "form": {
+    "contextLabel": "앱 컨텍스트",
+    "contextHint": "(앱을 설명하세요)",
+    "contextPlaceholder": "예: 6세에서 10세 사이의 어린이들을 위한 캐주얼 퍼즐 게임입니다. 사용자 친화적인 언어를 사용하고 필요한 경우 이모지를 사용하세요.",
+    "quickTemplates": "빠른 템플릿:",
+    "languageLabel": "대상 언어",
+    "translateButton": "번역",
+    "translatingButton": "번역 중...",
+    "fillFields": "모든 필드를 채워주세요",
+    "templates": {
+      "casualGame": "캐주얼 모바일 게임",
+      "b2b": "B2B 엔터프라이즈 소프트웨어",
+      "educational": "교육용 앱",
+      "health": "건강 및 피트니스",
+      "ecommerce": "이커머스 플랫폼"
+    }
+  },
+  "results": {
+    "title": "번역 결과",
+    "targetLanguage": "대상 언어",
+    "format": "형식",
+    "copy": "복사",
+    "copied": "복사됨!",
+    "download": "다운로드",
+    "note": "번역이 완료되었습니다! 복사하거나 JSON으로 다운로드하세요. 파일은 원래 구조를 유지하며 번역된 값을 포함합니다."
+  },
+  "status": {
+    "awaitingTitle": "번역을 기다리는 중...",
+    "awaitingHint": "폼을 채우고 번역 버튼을 클릭하세요",
+    "uploadTitle": "📁 시작하려면 파일을 업로드하세요",
+    "uploadHint": "JSON 및 YAML 형식 지원"
+  },
+  "features": {
+    "title": "QuickLocalize를 사용하는 이유?",
+    "contextAware": {
+      "title": "컨텍스트 인식",
+      "description": "앱에 대한 정보를 제공하여 톤에 맞는 번역을 얻으세요"
+    },
+    "free": {
+      "title": "무료로 영원히",
+      "description": "API 키나 결제가 필요 없습니다. Cloudflare 무료 티어에서 구축되었습니다."
+    },
+    "fast": {
+      "title": "빠르고 신뢰할 수 있는",
+      "description": "전 세계 Cloudflare 에지 네트워크에서 Llama 3에 의해 구동됩니다"
+    }
+  },
+  "footer": {
+    "copyright": "ⓒ 2024 QuickLocalize. 모든 권利 보유.",
+    "madeWith": "개발자들을 위해 ❤️ 로 만든",
+    "license": "MIT 라이선스",
+    "selfTranslated": "🌍 이 웹사이트는 여러 언어로 제공됩니다 — QuickLocalize 자체로 번역되었습니다."
+  },
+  "errors": {
+    "uploadFirst": "먼저 파일을 업로드하세요",
+    "translationFailed": "번역 실패"
+  },
+  "language": {
+    "select": "언어 선택"
+  }
+}
