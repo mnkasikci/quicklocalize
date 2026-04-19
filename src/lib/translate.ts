@@ -3,7 +3,7 @@ import * as Sentry from '@sentry/cloudflare';
 
 // llama-3.3-70b-instruct-fp8-fast: 24k context window, no fixed output cap.
 // We claim 8192 tokens for output, leaving ~16k for input prompt.
-export const MAX_OUTPUT_TOKENS = 8192;
+export const MAX_OUTPUT_TOKENS = 4096;
 const BUFFER_FACTOR = 0.8;   // 20% buffer
 const CHARS_PER_TOKEN = 2;   // conservative estimate for multilingual content
 export const MAX_BATCH_CHARS = Math.floor(MAX_OUTPUT_TOKENS * BUFFER_FACTOR * CHARS_PER_TOKEN); // ~13100
