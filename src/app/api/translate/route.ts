@@ -56,7 +56,16 @@ Rules:
           Authorization: `Bearer ${apiToken}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ messages, response_format: { type: 'json_object' } }),
+        body: JSON.stringify({
+          messages,
+          response_format: {
+            type: 'json_schema',
+            json_schema: {
+              name: 'translation',
+              schema: { type: 'object', additionalProperties: true },
+            },
+          },
+        }),
       }
     );
 
