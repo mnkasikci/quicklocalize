@@ -1,4 +1,4 @@
-import * as Sentry from '@sentry/nextjs';
+import * as Sentry from '@sentry/cloudflare';
 import { NextRequest, NextResponse } from 'next/server';
 import { createAiGateway } from 'ai-gateway-provider';
 import { createUnified } from 'ai-gateway-provider/providers/unified';
