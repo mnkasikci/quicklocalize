@@ -11,6 +11,9 @@ importers:
       '@cloudflare/ai':
         specifier: ^1.0.0
         version: 1.2.2
+      '@grapelaw/async-caller':
+        specifier: ^2.0.0
+        version: 2.0.0
       '@sentry/browser':
         specifier: ^10.49.0
         version: 10.49.0
@@ -462,6 +465,14 @@ packages:
   '@fastify/busboy@2.1.1':
     resolution: {integrity: sha512-vBZP4NlzfOlerQTnba4aqZoMhE/a9HY7HRqoOPaETQcSQuWEIyZMHGfVu6w9wGtGK5fED5qRs2DteVCjOH60sA==}
     engines: {node: '>=14'}
+
+  '@grapelaw/async-caller@2.0.0':
+    resolution: {integrity: sha512-CaIpPHqH9LBNmcn7h4/W/cQ+deZ9DqFpOk28Z+ERPMK0idwS1Mq8A8PVN5mY6Ycw50ckjZvjgl7CuZgDQ4bhJg==}
+    engines: {node: 20.x}
+
+  '@grapelaw/token-bucket@1.0.2':
+    resolution: {integrity: sha512-Yx0QrwRga8Me77+kgcxraliRV6ZK8xIUlO5hvSFDdbpXfjRD2O3fX9XQQv2Mg6QioNBuLUAsr7MDGKphCCWYqA==}
+    engines: {node: 20.x}
 
   '@humanwhocodes/config-array@0.13.0':
     resolution: {integrity: sha512-DZLEEqFWQFiyK6h5YIeynKx7JlvCYWL0cImfSRXZ9l4Sg2efkFGTuFf6vzXjK1cq6IYkU+Eg/JizXw+TD2vRNw==}
@@ -3124,6 +3135,12 @@ snapshots:
   '@eslint/js@8.57.1': {}
 
   '@fastify/busboy@2.1.1': {}
+
+  '@grapelaw/async-caller@2.0.0':
+    dependencies:
+      '@grapelaw/token-bucket': 1.0.2
+
+  '@grapelaw/token-bucket@1.0.2': {}
 
   '@humanwhocodes/config-array@0.13.0':
     dependencies:

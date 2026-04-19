@@ -1,5 +1,6 @@
 import { generateText, Output } from 'ai';
 import * as Sentry from '@sentry/cloudflare';
+import { AsyncCaller } from '@grapelaw/async-caller';
 
 // llama-3.3-70b-instruct-fp8-fast: 24k context window, no fixed output cap.
 // We claim 8192 tokens for output, leaving ~16k for input prompt.
@@ -101,17 +102,19 @@ export async function runBatches(
   targetLanguage: string
 ): Promise<Array<Record<string, any>>> {
   try {
-    const results = Array<Record<string, any>>();
-    for (const batch of batches) {
-      const { text } = await generateText({
-        model,
-        maxOutputTokens: MAX_OUTPUT_TOKENS,
-        system: systemPrompt,
-        prompt: `Translate this JSON to ${targetLanguage}:\n${JSON.stringify(batch, null, 2)}`,
-        output: Output.json(),
-      });
-      results.push(JSON.parse(text));
-    }
+    const caller = new AsyncCaller();
+    const results = await Promise.all(
+      batches.map(async (batch) => {
+        const { text } = await caller.call(async () => generateText({
+          model,
+          maxOutputTokens: MAX_OUTPUT_TOKENS,
+          system: systemPrompt,
+          prompt: `Translate this JSON to ${targetLanguage}:\n${JSON.stringify(batch, null, 2)}`,
+          output: Output.json(),
+        }));
+        return JSON.parse(text);
+      })
+    );
     return results;
   } catch (error) {
     Sentry.captureException(error);
