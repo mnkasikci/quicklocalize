@@ -25,8 +25,17 @@ export async function POST(request: NextRequest) {
     const accountId = process.env.CF_ACCOUNT_ID;
     const aigToken = process.env.CF_AIG_TOKEN;
     const gatewayId = process.env.CF_AI_GATEWAY_ID;
+    const mask = (value:string) => {
+      const firstthree = value.slice(0, 3);
+      const lastthree = value.slice(-3);
+      return `${firstthree}***${lastthree}`;
+    }
     if (!accountId || !aigToken || !gatewayId) {
-      return NextResponse.json({ error: 'Missing AI configuration env vars' }, { status: 500 });
+      let errormessage = 'Missing AI configuration env vars';
+      if (!accountId) errormessage += `\nCF_ACCOUNT_ID: ${mask(accountId ?? '')}`;
+      if (!aigToken) errormessage += `\nCF_AIG_TOKEN: ${mask(aigToken ?? '')}`;
+      if (!gatewayId) errormessage += `\nCF_AI_GATEWAY_ID: ${mask(gatewayId ?? '')}`;
+      return NextResponse.json({ error: errormessage }, { status: 500 });
     }
 
     const aigateway = createAiGateway({
