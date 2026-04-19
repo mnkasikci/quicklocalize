@@ -1,0 +1,43 @@
+name = "quicklocalize"
+type = "javascript"
+account_id = ""
+workers_dev = true
+main = "src/index.ts"
+compatibility_date = "2024-04-19"
+
+[build]
+command = "npm run build"
+cwd = "./"
+main = "src/index.ts"
+
+[build.upload]
+format = "modules"
+main = "src/index.ts"
+
+# Environment-specific configuration
+[env.production]
+name = "quicklocalize-prod"
+routes = [
+  { pattern = "api.quicklocalize.com/api/*", zone_name = "quicklocalize.com" }
+]
+
+# Local development settings
+[env.development]
+name = "quicklocalize-dev"
+workers_dev = true
+
+# Bindings for AI models
+[env.production.bindings]
+AI = { binding = "AI" }
+
+[env.development.bindings]
+AI = { binding = "AI" }
+
+# KV Namespace for storing translation cache (optional)
+# [[kv_namespaces]]
+# binding = "TRANSLATION_CACHE"
+# id = "your_kv_namespace_id"
+
+# Rate limiting and security headers
+[trigger]
+crons = []
