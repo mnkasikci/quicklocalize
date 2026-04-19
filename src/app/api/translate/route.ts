@@ -1,9 +1,10 @@
 import * as Sentry from '@sentry/nextjs';
 import { NextRequest, NextResponse } from 'next/server';
+import { createAiGateway } from 'ai-gateway-provider';
+import { createUnified } from 'ai-gateway-provider/providers/unified';
+import { generateText } from 'ai';
 
 export const runtime = 'edge';
-
-const CF_AI_MODEL = '@cf/meta/llama-3.1-8b-instruct';
 
 interface TranslateRequest {
   file: Record<string, any>;
@@ -21,18 +22,23 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
-    const apiToken = process.env.CF_AI_TOKEN;
     const accountId = process.env.CF_ACCOUNT_ID;
-    if (!apiToken || !accountId) {
-      return NextResponse.json({ error: 'CF_AI_TOKEN or CF_ACCOUNT_ID not configured' }, { status: 500 });
+    const aigToken = process.env.CF_AIG_TOKEN;
+    const gatewayId = process.env.CF_AI_GATEWAY_ID;
+    if (!accountId || !aigToken || !gatewayId) {
+      return NextResponse.json({ error: 'Missing AI configuration env vars' }, { status: 500 });
     }
 
-    const fileContent = JSON.stringify(file, null, 2);
+    const aigateway = createAiGateway({
+      accountId,
+      gateway: gatewayId,
+      apiKey: aigToken,
+    });
+    const unified = createUnified();
 
-    const messages = [
-      {
-        role: 'system',
-        content: `You are a professional localization expert. Translate the JSON values to ${targetLanguage}.
+    const { text } = await generateText({
+      model: aigateway(unified('workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast')),
+      system: `You are a professional localization expert. Translate the JSON values to ${targetLanguage}.
 
 App context: ${context}
 
@@ -41,50 +47,15 @@ Rules:
 - Preserve all keys exactly as-is
 - Only translate string values
 - Maintain the exact same nested structure`,
-      },
-      {
-        role: 'user',
-        content: `Translate this JSON to ${targetLanguage}:\n${fileContent}`,
-      },
-    ];
-
-    const response = await fetch(
-      `https://api.cloudflare.com/client/v4/accounts/${accountId}/ai/run/${CF_AI_MODEL}`,
-      {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${apiToken}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          messages,
-          response_format: {
-            type: 'json_schema',
-            json_schema: {
-              name: 'translation',
-              schema: { type: 'object', additionalProperties: true },
-            },
-          },
-        }),
-      }
-    );
-
-    if (!response.ok) {
-      const err = await response.text();
-      throw new Error(`CF AI error ${response.status}: ${err}`);
-    }
-
-    const aiResult = await response.json();
-    const rawText: string = aiResult.result?.response ?? '';
+      prompt: `Translate this JSON to ${targetLanguage}:\n${JSON.stringify(file, null, 2)}`,
+    });
 
     let translated: Record<string, any>;
     try {
-      translated = JSON.parse(rawText);
+      translated = JSON.parse(text);
     } catch {
-      // Strip markdown code fences if present, then retry
-      const match =
-        rawText.match(/```(?:json)?\s*([\s\S]+?)\s*```/) ?? rawText.match(/(\{[\s\S]+\})/);
-      if (!match) throw new Error(`AI returned non-JSON response: ${rawText.slice(0, 200)}`);
+      const match = text.match(/```(?:json)?\s*([\s\S]+?)\s*```/) ?? text.match(/(\{[\s\S]+\})/);
+      if (!match) throw new Error(`AI returned non-JSON response: ${text.slice(0, 200)}`);
       translated = JSON.parse(match[1] ?? '{}');
     }
 
