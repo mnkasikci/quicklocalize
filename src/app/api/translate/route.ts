@@ -16,6 +16,7 @@ interface TranslateRequest {
 
 export function POST(request: NextRequest) {
   let stepsCompleted = "";
+  const allBatches: Array<Record<string, any>> = [];
   return withSentryHandler(request, async () => { try {
     const body: TranslateRequest = await request.json();
     const { file, context, targetLanguage, fileFormat } = body;
@@ -44,6 +45,7 @@ Rules:
 - Only translate string values
 - Maintain the exact same nested structure`;
     const batches = breakdown(file);
+    allBatches.push(...batches);
     stepsCompleted += `Breakdown: ${batches.length} batches`;
     const results = await runBatches(batches, model, systemPrompt, targetLanguage);
     stepsCompleted += `Run batches: ${results.length} results`;
@@ -59,7 +61,7 @@ Rules:
   } catch (error) {
     Sentry.captureException(error);
     Sentry.flush(2000);
-    return NextResponse.json({ error: 'Translation failed. ' + stepsCompleted, details: String(error) }, { status: 500 });
+    return NextResponse.json({ error: 'Translation failed. ' + stepsCompleted,"batches": JSON.stringify(allBatches), details: String(error) }, { status: 500 });
   }
   });
 }
