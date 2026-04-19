@@ -1,4 +1,5 @@
 import { generateText, Output } from 'ai';
+import * as Sentry from '@sentry/cloudflare';
 
 // llama-3.3-70b-instruct-fp8-fast: 24k context window, no fixed output cap.
 // We claim 8192 tokens for output, leaving ~16k for input prompt.
@@ -99,6 +100,7 @@ export async function runBatches(
   systemPrompt: string,
   targetLanguage: string
 ): Promise<Array<Record<string, any>>> {
+  try {
   return Promise.all(
     batches.map(async (batch) => {
       const { text } = await generateText({
@@ -111,6 +113,10 @@ export async function runBatches(
       return JSON.parse(text);
     })
   );
+  } catch (error) {
+    Sentry.captureException(error);
+    throw error;
+  }
 }
 
 // ---------------------------------------------------------------------------

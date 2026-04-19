@@ -1,6 +1,6 @@
 'use client';
 
-import * as Sentry from '@sentry/nextjs';
+import * as Sentry from '@sentry/cloudflare';
 import { useEffect } from 'react';
 
 export default function GlobalError({
