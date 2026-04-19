@@ -1,0 +1,82 @@
+{
+  "nav": {
+    "github": "GitHub",
+    "issues": "Issues"
+  },
+  "hero": {
+    "title": "Localize Your App, Instantly",
+    "description": "Upload your localization files, add context about your app, and get intelligent, tone-aware translations powered by LLMs.",
+    "githubButton": "GitHub Repository"
+  },
+  "steps": {
+    "upload": "Step 1: Upload File",
+    "translate": "Step 2: Add Context & Translate"
+  },
+  "upload": {
+    "dropActive": "Drop your file here",
+    "dropIdle": "Drag & drop your file here",
+    "browse": "or click to browse (JSON / YAML)",
+    "invalidFile": "Please upload a valid JSON or YAML file",
+    "fileUploaded": "✓ File uploaded: {filename}"
+  },
+  "form": {
+    "contextLabel": "App Context",
+    "contextHint": "(describe your app)",
+    "contextPlaceholder": "e.g., This is a casual puzzle game for kids aged 6-10. Use friendly, playful language with emojis where appropriate.",
+    "quickTemplates": "Quick templates:",
+    "languageLabel": "Target Language",
+    "translateButton": "Translate",
+    "translatingButton": "Translating...",
+    "fillFields": "Please fill in all fields",
+    "templates": {
+      "casualGame": "Casual Mobile Game",
+      "b2b": "B2B Enterprise Software",
+      "educational": "Educational App",
+      "health": "Health & Fitness",
+      "ecommerce": "E-Commerce Platform"
+    }
+  },
+  "results": {
+    "title": "Translation Result",
+    "targetLanguage": "Target Language",
+    "format": "Format",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "download": "Download",
+    "note": "Your translation is ready! Copy it or download as JSON. The file maintains the original structure with translated values."
+  },
+  "status": {
+    "awaitingTitle": "Awaiting translation...",
+    "awaitingHint": "Fill in the form and click translate",
+    "uploadTitle": "📁 Upload a file to get started",
+    "uploadHint": "Supports JSON and YAML formats"
+  },
+  "features": {
+    "title": "Why QuickLocalize?",
+    "contextAware": {
+      "title": "Context-Aware",
+      "description": "Provide context about your app to get tone-appropriate translations"
+    },
+    "free": {
+      "title": "Free Forever",
+      "description": "No API keys, no payment required. Built on Cloudflare free tier."
+    },
+    "fast": {
+      "title": "Fast & Reliable",
+      "description": "Powered by Llama 3 on Cloudflare edge network worldwide"
+    }
+  },
+  "footer": {
+    "copyright": "© 2024 QuickLocalize. All rights reserved.",
+    "madeWith": "Made with ❤️ for developers worldwide",
+    "license": "MIT License",
+    "selfTranslated": "🌍 This website is available in multiple languages — translated using QuickLocalize itself."
+  },
+  "errors": {
+    "uploadFirst": "Please upload a file first",
+    "translationFailed": "Translation failed"
+  },
+  "language": {
+    "select": "Select language"
+  }
+}

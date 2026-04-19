@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Send } from 'lucide-react';
+import { useLocale } from '@/context/LocaleContext';
 
 interface TranslationFormProps {
   onTranslate: (data: { context: string; targetLanguage: string }) => void;
@@ -21,23 +22,23 @@ const COMMON_LANGUAGES = [
   { code: 'ar', name: 'Arabic' },
 ];
 
-const CONTEXT_TEMPLATES = [
-  { label: 'Casual Mobile Game', value: 'This is a casual mobile game for entertainment' },
-  { label: 'B2B Enterprise Software', value: 'This is professional B2B enterprise software for business operations' },
-  { label: 'Educational App', value: 'This is an educational app designed to help users learn new skills' },
-  { label: 'Health & Fitness', value: 'This is a health and fitness tracking application' },
-  { label: 'E-Commerce Platform', value: 'This is an e-commerce platform for buying and selling products' },
-];
-
 export function TranslationForm({ onTranslate, isLoading = false }: TranslationFormProps) {
   const [context, setContext] = useState('');
   const [targetLanguage, setTargetLanguage] = useState('es');
-  const [useTemplate, setUseTemplate] = useState(false);
+  const { t } = useLocale();
+
+  const CONTEXT_TEMPLATES = [
+    { labelKey: 'form.templates.casualGame', value: 'This is a casual mobile game for entertainment' },
+    { labelKey: 'form.templates.b2b', value: 'This is professional B2B enterprise software for business operations' },
+    { labelKey: 'form.templates.educational', value: 'This is an educational app designed to help users learn new skills' },
+    { labelKey: 'form.templates.health', value: 'This is a health and fitness tracking application' },
+    { labelKey: 'form.templates.ecommerce', value: 'This is an e-commerce platform for buying and selling products' },
+  ];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!context.trim() || !targetLanguage) {
-      alert('Please fill in all fields');
+      alert(t('form.fillFields'));
       return;
     }
     onTranslate({ context, targetLanguage });
@@ -45,44 +46,41 @@ export function TranslationForm({ onTranslate, isLoading = false }: TranslationF
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      {/* Context Textarea */}
       <div>
         <label className="block text-sm font-medium mb-2">
-          App Context
-          <span className="text-blue-400 ml-1">(describe your app)</span>
+          {t('form.contextLabel')}
+          <span className="text-blue-400 ml-1">{t('form.contextHint')}</span>
         </label>
         <textarea
           value={context}
           onChange={(e) => setContext(e.target.value)}
-          placeholder="e.g., This is a casual puzzle game for kids aged 6-10. Use friendly, playful language with emojis where appropriate."
+          placeholder={t('form.contextPlaceholder')}
           className="w-full bg-slate-700/50 border border-slate-600 rounded-lg p-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
           rows={4}
           disabled={isLoading}
         />
       </div>
 
-      {/* Quick Templates */}
-      {!useTemplate && context === '' && (
+      {context === '' && (
         <div>
-          <p className="text-xs text-slate-400 mb-2">Quick templates:</p>
+          <p className="text-xs text-slate-400 mb-2">{t('form.quickTemplates')}</p>
           <div className="grid grid-cols-2 gap-2">
-            {CONTEXT_TEMPLATES.map((template) => (
+            {CONTEXT_TEMPLATES.map((tmpl) => (
               <button
-                key={template.label}
+                key={tmpl.labelKey}
                 type="button"
-                onClick={() => setContext(template.value)}
+                onClick={() => setContext(tmpl.value)}
                 className="text-left text-xs px-3 py-2 bg-slate-700/30 hover:bg-slate-700/60 border border-slate-600 rounded transition"
               >
-                {template.label}
+                {t(tmpl.labelKey)}
               </button>
             ))}
           </div>
         </div>
       )}
 
-      {/* Target Language */}
       <div>
-        <label className="block text-sm font-medium mb-2">Target Language</label>
+        <label className="block text-sm font-medium mb-2">{t('form.languageLabel')}</label>
         <select
           value={targetLanguage}
           onChange={(e) => setTargetLanguage(e.target.value)}
@@ -97,7 +95,6 @@ export function TranslationForm({ onTranslate, isLoading = false }: TranslationF
         </select>
       </div>
 
-      {/* Submit Button */}
       <button
         type="submit"
         disabled={isLoading}
@@ -108,7 +105,7 @@ export function TranslationForm({ onTranslate, isLoading = false }: TranslationF
         }`}
       >
         <Send size={18} />
-        {isLoading ? 'Translating...' : 'Translate'}
+        {isLoading ? t('form.translatingButton') : t('form.translateButton')}
       </button>
     </form>
   );
