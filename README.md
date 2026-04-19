@@ -30,24 +30,29 @@
 ## 🛠️ Local Setup
 
 ### 1. Clone the Repository
+
 ```bash
 git clone https://github.com/yourusername/quicklocalize.git
 cd quicklocalize
 ```
 
 ### 2. Install Dependencies
+
 ```bash
 npm install
 ```
 
 ### 3. Set Up Environment Variables
+
 Create a `.env.local` file:
+
 ```env
 NEXT_PUBLIC_CF_ACCOUNT_ID=your_cloudflare_account_id
 NEXT_PUBLIC_CF_API_TOKEN=your_cloudflare_api_token
 ```
 
 ### 4. Run Locally
+
 ```bash
 npm run dev
 ```
@@ -73,6 +78,7 @@ quicklocalize/
 ## 🌍 How It Works
 
 ### User Flow
+
 1. User uploads a JSON/YAML localization file
 2. User provides app context (e.g., "Casual mobile game", "Enterprise B2B solution")
 3. User selects target language(s)
@@ -81,9 +87,10 @@ quicklocalize/
 6. User downloads translated file(s)
 
 ### Behind the Scenes
+
 ```
-User Upload → Next.js Handler → Cloudflare Worker 
-→ Workers AI (Llama 3) → Translate with Context 
+User Upload → Next.js Handler → Cloudflare Worker
+→ Workers AI (Llama 3) → Translate with Context
 → Return Result → User Download
 ```
 
@@ -114,16 +121,19 @@ vs.
 ## 🚀 Deployment to Cloudflare
 
 ### 1. Install Wrangler CLI
+
 ```bash
 npm install -g wrangler
 ```
 
 ### 2. Authenticate with Cloudflare
+
 ```bash
 wrangler login
 ```
 
 ### 3. Deploy
+
 ```bash
 npm run deploy
 ```
@@ -131,11 +141,13 @@ npm run deploy
 Your app will be live on `quicklocalize.pages.dev`
 
 ### 4. Custom Domain (Optional)
+
 Configure in your Cloudflare dashboard under Pages → Custom Domain
 
 ## 💰 Costs
 
 **At typical usage:**
+
 - Pages: FREE (100,000 requests/day)
 - Workers: FREE tier up to 100,000 requests/day
 - Workers AI: ~$0.011 per 1,000 Neurons (usually $0-5/month for small projects)
@@ -147,6 +159,7 @@ Configure in your Cloudflare dashboard under Pages → Custom Domain
 ### POST `/api/translate`
 
 **Request:**
+
 ```json
 {
   "file": {
@@ -161,6 +174,7 @@ Configure in your Cloudflare dashboard under Pages → Custom Domain
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -183,6 +197,7 @@ We welcome contributions! Please follow these steps:
 5. Open a Pull Request
 
 ### Development Guidelines
+
 - Write clean, readable code
 - Add comments for complex logic
 - Test your changes locally before submitting a PR
@@ -191,6 +206,7 @@ We welcome contributions! Please follow these steps:
 ## 🐛 Issues & Bug Reports
 
 Found a bug? Please open an issue on GitHub with:
+
 - Description of the bug
 - Steps to reproduce
 - Expected vs actual behavior

@@ -74,7 +74,8 @@ export function ResultsDisplay({ result }: ResultsDisplayProps) {
       </div>
 
       <p className="text-xs text-slate-400 bg-slate-800/30 p-3 rounded">
-        💡 {t('results.note')}
+        💡
+        {t('results.note')}
       </p>
     </div>
   );

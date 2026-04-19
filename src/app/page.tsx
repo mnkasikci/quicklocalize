@@ -126,7 +126,11 @@ export default function Home() {
         <h2 className="text-2xl font-bold text-center">{t('features.title')}</h2>
         <div className="grid md:grid-cols-3 gap-6">
           {[
-            { icon: '🎯', titleKey: 'features.contextAware.title', descKey: 'features.contextAware.description' },
+            {
+              icon: '🎯',
+              titleKey: 'features.contextAware.title',
+              descKey: 'features.contextAware.description',
+            },
             { icon: '💰', titleKey: 'features.free.title', descKey: 'features.free.description' },
             { icon: '⚡', titleKey: 'features.fast.title', descKey: 'features.fast.description' },
           ].map((f) => (

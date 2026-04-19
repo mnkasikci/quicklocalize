@@ -28,11 +28,26 @@ export function TranslationForm({ onTranslate, isLoading = false }: TranslationF
   const { t } = useLocale();
 
   const CONTEXT_TEMPLATES = [
-    { labelKey: 'form.templates.casualGame', value: 'This is a casual mobile game for entertainment' },
-    { labelKey: 'form.templates.b2b', value: 'This is professional B2B enterprise software for business operations' },
-    { labelKey: 'form.templates.educational', value: 'This is an educational app designed to help users learn new skills' },
-    { labelKey: 'form.templates.health', value: 'This is a health and fitness tracking application' },
-    { labelKey: 'form.templates.ecommerce', value: 'This is an e-commerce platform for buying and selling products' },
+    {
+      labelKey: 'form.templates.casualGame',
+      value: 'This is a casual mobile game for entertainment',
+    },
+    {
+      labelKey: 'form.templates.b2b',
+      value: 'This is professional B2B enterprise software for business operations',
+    },
+    {
+      labelKey: 'form.templates.educational',
+      value: 'This is an educational app designed to help users learn new skills',
+    },
+    {
+      labelKey: 'form.templates.health',
+      value: 'This is a health and fitness tracking application',
+    },
+    {
+      labelKey: 'form.templates.ecommerce',
+      value: 'This is an e-commerce platform for buying and selling products',
+    },
   ];
 
   const handleSubmit = (e: React.FormEvent) => {

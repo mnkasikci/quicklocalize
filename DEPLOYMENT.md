@@ -11,11 +11,13 @@ This guide covers deploying QuickLocalize to Cloudflare Pages and configuring Wo
 ## Step 1: Prepare Your Cloudflare Account
 
 ### 1.1 Get Your Account ID
+
 1. Log in to [Cloudflare Dashboard](https://dash.cloudflare.com/)
 2. Go to **Account Home** → **Overview**
 3. Copy your **Account ID** (right sidebar)
 
 ### 1.2 Create API Token
+
 1. Go to **My Profile** → **API Tokens**
 2. Click **Create Token**
 3. Use template: **"Edit Cloudflare Workers"**
@@ -28,6 +30,7 @@ This guide covers deploying QuickLocalize to Cloudflare Pages and configuring Wo
 ## Step 2: Push Code to GitHub
 
 ### 2.1 Create Repository
+
 1. Go to [GitHub.com](https://github.com/new)
 2. Repository name: `quicklocalize`
 3. Description: "Free, open-source localization tool powered by LLMs"
@@ -36,6 +39,7 @@ This guide covers deploying QuickLocalize to Cloudflare Pages and configuring Wo
 6. Click **Create repository**
 
 ### 2.2 Push Local Code
+
 ```bash
 cd /path/to/quicklocalize
 
@@ -50,6 +54,7 @@ git push -u origin main
 ## Step 3: Configure Cloudflare Pages
 
 ### 3.1 Connect GitHub
+
 1. Log in to [Cloudflare Dashboard](https://dash.cloudflare.com/)
 2. Go to **Workers & Pages** → **Pages**
 3. Click **Create application** → **Connect to Git**
@@ -58,6 +63,7 @@ git push -u origin main
 6. Click **Begin setup**
 
 ### 3.2 Build Settings
+
 1. Framework preset: **Next.js**
 2. Build command: `npm run build`
 3. Build output directory: `.next`
@@ -70,14 +76,17 @@ git push -u origin main
 ## Step 4: Set Environment Variables
 
 ### 4.1 Add Cloudflare AI Token
+
 1. In Cloudflare Pages → **quicklocalize** → **Settings** → **Environment variables**
 2. Add production variable:
+
    ```
    Key: CLOUDFLARE_API_TOKEN
    Value: [paste your token from Step 1.2]
    ```
 
 3. Add account ID:
+
    ```
    Key: CLOUDFLARE_ACCOUNT_ID
    Value: [paste your Account ID from Step 1.1]
@@ -104,11 +113,13 @@ curl -X POST https://quicklocalize.pages.dev/api/translate \
 ## Step 6: Custom Domain (Optional)
 
 ### 6.1 Add Domain to Cloudflare
+
 1. In Cloudflare Pages → **quicklocalize** → **Custom domain**
 2. Enter your domain (e.g., `quicklocalize.com`)
 3. Follow instructions to update your domain's nameservers
 
 ### 6.2 Update wrangler.toml
+
 ```toml
 [env.production]
 routes = [
@@ -129,17 +140,20 @@ Your deployment is now using Cloudflare Workers AI for translations.
 ## Step 8: Monitor Deployment
 
 ### View Logs
+
 ```bash
 wrangler tail --project-name quicklocalize
 ```
 
 ### View Analytics
+
 1. **Cloudflare Dashboard** → **Pages** → **quicklocalize** → **Analytics**
 2. Monitor requests, bandwidth, and errors
 
 ## Cost Management
 
 Monitor your costs:
+
 1. **Cloudflare Dashboard** → **Billing** → **Subscriptions**
 2. Workers AI usage is visible under **Usage** tab
 3. Set up budget alerts if needed
@@ -147,16 +161,19 @@ Monitor your costs:
 ## Troubleshooting
 
 ### Deployment Failed
+
 - Check **Deployments** tab for error logs
 - Ensure `package.json` and build scripts are correct
 - Verify Node.js version (18+)
 
 ### Translation API Not Working
+
 - Check environment variables are set
 - Verify Cloudflare API token is valid
 - Check Workers AI is enabled on your account
 
 ### Performance Issues
+
 - Monitor request latency in Analytics
 - Check for rate limiting
 - Consider implementing caching for common translations
@@ -179,5 +196,6 @@ To revert to previous deployment:
 ---
 
 For more help, check:
+
 - [Cloudflare Pages Docs](https://developers.cloudflare.com/pages/)
 - [Cloudflare Workers AI Docs](https://developers.cloudflare.com/workers-ai/)

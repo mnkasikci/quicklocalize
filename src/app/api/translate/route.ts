@@ -15,27 +15,30 @@ interface TranslateRequest {
 }
 
 export function POST(request: NextRequest) {
-  let stepsCompleted = "";
+  let stepsCompleted = '';
   const allBatches: Array<Record<string, any>> = [];
-  return withSentryHandler(request, async () => { try {
-    const body: TranslateRequest = await request.json();
-    const { file, context, targetLanguage, fileFormat } = body;
+  return withSentryHandler(request, async () => {
+    try {
+      const body: TranslateRequest = await request.json();
+      const { file, context, targetLanguage, fileFormat } = body;
 
-    if (!file || !context || !targetLanguage) {
-      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
-    }
+      if (!file || !context || !targetLanguage) {
+        return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
+      }
 
-    const accountId = process.env.CF_ACCOUNT_ID;
-    const aigToken = process.env.CF_AIG_TOKEN;
-    const gatewayId = process.env.CF_AI_GATEWAY_ID;
-    if (!accountId || !aigToken || !gatewayId) {
-      return NextResponse.json({ error: 'Missing AI configuration env vars' }, { status: 500 });
-    }
+      const accountId = process.env.CF_ACCOUNT_ID;
+      const aigToken = process.env.CF_AIG_TOKEN;
+      const gatewayId = process.env.CF_AI_GATEWAY_ID;
+      if (!accountId || !aigToken || !gatewayId) {
+        return NextResponse.json({ error: 'Missing AI configuration env vars' }, { status: 500 });
+      }
 
-    const aigateway = createAiGateway({ accountId, gateway: gatewayId, apiKey: aigToken });
-    const model = aigateway(createUnified()('workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast'));
+      const aigateway = createAiGateway({ accountId, gateway: gatewayId, apiKey: aigToken });
+      const model = aigateway(
+        createUnified()('workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast')
+      );
 
-    const systemPrompt = `You are a professional localization expert. Translate the JSON values to ${targetLanguage}.
+      const systemPrompt = `You are a professional localization expert. Translate the JSON values to ${targetLanguage}.
 
 App context: ${context}
 
@@ -44,24 +47,31 @@ Rules:
 - Preserve all keys exactly as-is
 - Only translate string values
 - Maintain the exact same nested structure`;
-    const batches = breakdown(file);
-    allBatches.push(...batches);
-    stepsCompleted += `Breakdown: ${batches.length} batches`;
-    const results = await runBatches(batches, model, systemPrompt, targetLanguage);
-    stepsCompleted += `Run batches: ${results.length} results`;
-    const translated = combine(results);
-    stepsCompleted += `Combine: ${translated.length} keys`;
-    return NextResponse.json({
-      success: true,
-      originalLanguage: 'auto-detected',
-      targetLanguage,
-      translated,
-      format: fileFormat,
-    });
-  } catch (error) {
-    Sentry.captureException(error);
-    return NextResponse.json({ error: 'Translation failed. ' + stepsCompleted,"batches": JSON.stringify(allBatches), details: String(error) }, { status: 500 });
-  }
+      const batches = breakdown(file);
+      allBatches.push(...batches);
+      stepsCompleted += `Breakdown: ${batches.length} batches`;
+      const results = await runBatches(batches, model, systemPrompt, targetLanguage);
+      stepsCompleted += `Run batches: ${results.length} results`;
+      const translated = combine(results);
+      stepsCompleted += `Combine: ${translated.length} keys`;
+      return NextResponse.json({
+        success: true,
+        originalLanguage: 'auto-detected',
+        targetLanguage,
+        translated,
+        format: fileFormat,
+      });
+    } catch (error) {
+      Sentry.captureException(error);
+      return NextResponse.json(
+        {
+          error: 'Translation failed. ' + stepsCompleted,
+          batches: JSON.stringify(allBatches),
+          details: String(error),
+        },
+        { status: 500 }
+      );
+    }
   });
 }
 

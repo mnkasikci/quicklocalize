@@ -5,8 +5,8 @@ import { AsyncCaller } from '@grapelaw/async-caller';
 // llama-3.3-70b-instruct-fp8-fast: 24k context window, no fixed output cap.
 // We claim 8192 tokens for output, leaving ~16k for input prompt.
 export const MAX_OUTPUT_TOKENS = 4096;
-const BUFFER_FACTOR = 0.8;   // 20% buffer
-const CHARS_PER_TOKEN = 2;   // conservative estimate for multilingual content
+const BUFFER_FACTOR = 0.8; // 20% buffer
+const CHARS_PER_TOKEN = 2; // conservative estimate for multilingual content
 export const MAX_BATCH_CHARS = Math.floor(MAX_OUTPUT_TOKENS * BUFFER_FACTOR * CHARS_PER_TOKEN); // ~13100
 
 // ---------------------------------------------------------------------------
@@ -109,17 +109,19 @@ export async function runBatches(
         maxDelayInMs: 10000,
         maxRetries: 10,
         minDelayInMs: 1000,
-      }
+      },
     });
     const results = await Promise.all(
       batches.map(async (batch) => {
-        const { text } = await caller.call(async () => generateText({
-          model,
-          maxOutputTokens: MAX_OUTPUT_TOKENS,
-          system: systemPrompt,
-          prompt: `Translate this JSON to ${targetLanguage}:\n${JSON.stringify(batch, null, 2)}`,
-          output: Output.json(),
-        }));
+        const { text } = await caller.call(async () =>
+          generateText({
+            model,
+            maxOutputTokens: MAX_OUTPUT_TOKENS,
+            system: systemPrompt,
+            prompt: `Translate this JSON to ${targetLanguage}:\n${JSON.stringify(batch, null, 2)}`,
+            output: Output.json(),
+          })
+        );
         return JSON.parse(text);
       })
     );

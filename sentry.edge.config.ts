@@ -1,4 +1,4 @@
-import * as Sentry from "@sentry/cloudflare";
+import * as Sentry from '@sentry/cloudflare';
 
 export const onRequest = [
   Sentry.sentryPagesPlugin((context) => ({

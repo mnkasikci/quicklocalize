@@ -55,9 +55,7 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <LocaleContext.Provider value={{ language, setLanguage, t }}>
-      {children}
-    </LocaleContext.Provider>
+    <LocaleContext.Provider value={{ language, setLanguage, t }}>{children}</LocaleContext.Provider>
   );
 }
 
