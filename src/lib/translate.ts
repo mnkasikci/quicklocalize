@@ -1,6 +1,6 @@
 import { generateText, Output } from 'ai';
 import * as Sentry from '@sentry/cloudflare';
-import { AsyncCaller } from '@grapelaw/async-caller';
+import { AsyncCaller, ResultIdentifier } from '@grapelaw/async-caller';
 
 // llama-3.3-70b-instruct-fp8-fast: 24k context window, no fixed output cap.
 // We claim 8192 tokens for output, leaving ~16k for input prompt.
@@ -102,6 +102,24 @@ export async function runBatches(
   targetLanguage: string
 ): Promise<Array<Record<string, any>>> {
   try {
+    const resultIdentifier: ResultIdentifier = {
+      identifyError: (error: any) => {
+        if (error.message && String(error.message).includes('your daily free')) {
+          return {
+            dontRetry: true,
+            isRateLimited: true,
+          };
+        }
+        return {
+          dontRetry: false,
+          isRateLimited: false,
+        };
+      },
+      identifyResult: (result: any) => ({
+        isRateLimited: false,
+        isClientSideError: false,
+      }),
+    };
     const caller = new AsyncCaller({
       concurrency: 10,
       retryOptions: {
@@ -110,6 +128,7 @@ export async function runBatches(
         maxRetries: 10,
         minDelayInMs: 1000,
       },
+      customResultIdentifier: resultIdentifier
     });
     const results = await Promise.all(
       batches.map(async (batch) => {
