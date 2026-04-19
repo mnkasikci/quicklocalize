@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'edge';
 
-const CF_AI_MODEL = '@cf/meta/llama-3-8b-instruct';
+const CF_AI_MODEL = '@cf/meta/llama-3.1-8b-instruct';
 
 interface TranslateRequest {
   file: Record<string, any>;
@@ -56,7 +56,7 @@ Rules:
           Authorization: `Bearer ${apiToken}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ messages }),
+        body: JSON.stringify({ messages, response_format: { type: 'json_object' } }),
       }
     );
 
