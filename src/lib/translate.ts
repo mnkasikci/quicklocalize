@@ -101,8 +101,8 @@ export async function runBatches(
   targetLanguage: string
 ): Promise<Array<Record<string, any>>> {
   try {
-  return Promise.all(
-    batches.map(async (batch) => {
+    const results = Array<Record<string, any>>();
+    for (const batch of batches) {
       const { text } = await generateText({
         model,
         maxOutputTokens: MAX_OUTPUT_TOKENS,
@@ -110,9 +110,9 @@ export async function runBatches(
         prompt: `Translate this JSON to ${targetLanguage}:\n${JSON.stringify(batch, null, 2)}`,
         output: Output.json(),
       });
-      return JSON.parse(text);
-    })
-  );
+      results.push(JSON.parse(text));
+    }
+    return results;
   } catch (error) {
     Sentry.captureException(error);
     throw error;
