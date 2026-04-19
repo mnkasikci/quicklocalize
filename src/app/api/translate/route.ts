@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createAiGateway } from 'ai-gateway-provider';
 import { createUnified } from 'ai-gateway-provider/providers/unified';
 import { breakdown, runBatches, combine } from '@/lib/translate';
+import { withSentryHandler } from '@/lib/sentry';
 
 export const runtime = 'edge';
 
@@ -13,8 +14,8 @@ interface TranslateRequest {
   fileFormat: 'json' | 'yaml';
 }
 
-export async function POST(request: NextRequest) {
-  try {
+export function POST(request: NextRequest) {
+  return withSentryHandler(request, async () => { try {
     const body: TranslateRequest = await request.json();
     const { file, context, targetLanguage, fileFormat } = body;
 
@@ -57,6 +58,7 @@ Rules:
     Sentry.captureException(error);
     return NextResponse.json({ error: 'Translation failed', details: String(error) }, { status: 500 });
   }
+  });
 }
 
 export async function OPTIONS() {
