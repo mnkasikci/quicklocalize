@@ -102,7 +102,15 @@ export async function runBatches(
   targetLanguage: string
 ): Promise<Array<Record<string, any>>> {
   try {
-    const caller = new AsyncCaller();
+    const caller = new AsyncCaller({
+      concurrency: 10,
+      retryOptions: {
+        backoffFactor: 1.1,
+        maxDelayInMs: 10000,
+        maxRetries: 10,
+        minDelayInMs: 1000,
+      }
+    });
     const results = await Promise.all(
       batches.map(async (batch) => {
         const { text } = await caller.call(async () => generateText({

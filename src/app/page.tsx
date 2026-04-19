@@ -11,12 +11,14 @@ export default function Home() {
   const [translationResult, setTranslationResult] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [hasSubmitted, setHasSubmitted] = useState(false);
   const { t } = useLocale();
 
   const handleFileUpload = (file: File) => {
     setUploadedFile(file);
     setError(null);
     setTranslationResult(null);
+    setHasSubmitted(false);
   };
 
   const handleTranslate = async (formData: { context: string; targetLanguage: string }) => {
@@ -26,6 +28,7 @@ export default function Home() {
     }
 
     setIsLoading(true);
+    setHasSubmitted(true);
     setError(null);
 
     try {
@@ -104,7 +107,7 @@ export default function Home() {
               <ResultsDisplay result={translationResult} />
             </div>
           )}
-          {!translationResult && uploadedFile && (
+          {!translationResult && uploadedFile && hasSubmitted && (
             <div className="card p-6 text-center text-slate-400">
               <p>{t('status.awaitingTitle')}</p>
               <p className="text-sm mt-2">{t('status.awaitingHint')}</p>
