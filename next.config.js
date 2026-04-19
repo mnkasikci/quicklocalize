@@ -1,3 +1,4 @@
+const { withSentryConfig } = require('@sentry/nextjs');
 const { setupDevPlatform } = require('@cloudflare/next-on-pages/next-dev');
 
 if (process.env.NODE_ENV === 'development') {
@@ -49,4 +50,8 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+module.exports = withSentryConfig(nextConfig, {
+  silent: true,
+  telemetry: false,
+  sourcemaps: { disable: true },
+});

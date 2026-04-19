@@ -1,3 +1,4 @@
+import * as Sentry from '@sentry/nextjs';
 import { NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'edge';
@@ -86,7 +87,7 @@ Rules:
       format: fileFormat,
     });
   } catch (error) {
-    console.error('Translation error:', error);
+    Sentry.captureException(error);
     return NextResponse.json({ error: 'Translation failed', details: String(error) }, { status: 500 });
   }
 }
