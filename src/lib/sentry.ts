@@ -12,6 +12,12 @@ export function withSentryHandler(
       request: request as Parameters<typeof Sentry.wrapRequestHandler>[0]['request'],
       context: undefined,
     },
-    handler
+    async () => {
+      try {
+        return await handler();
+      } finally {
+        await Sentry.flush(2000);
+      }
+    }
   );
 }
