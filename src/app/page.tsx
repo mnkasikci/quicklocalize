@@ -74,7 +74,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="grid md:grid-cols-2 gap-8">
+      <section className="grid md:grid-cols-2 gap-8 items-start">
         <div className="space-y-6">
           <div className="card p-6">
             <h2 className="text-xl font-semibold mb-4">{t('steps.upload')}</h2>
@@ -102,7 +102,7 @@ export default function Home() {
 
         <div className="space-y-6">
           {translationResult && (
-            <div className="card p-6">
+            <div className="card p-6 max-h-[80vh] overflow-y-auto">
               <h2 className="text-xl font-semibold mb-4">{t('results.title')}</h2>
               <ResultsDisplay result={translationResult} />
             </div>
