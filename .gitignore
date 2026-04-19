@@ -47,3 +47,9 @@ wrangler.toml.local
 
 # Environment-specific files
 .env.*.local
+
+#vercel
+.vercel/
+
+#claude
+.claude/
