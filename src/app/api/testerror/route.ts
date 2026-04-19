@@ -7,7 +7,6 @@ export const runtime = 'edge';
 export function GET(request: NextRequest) {
   return withSentryHandler(request, async () => {
     Sentry.captureException(new Error('Sentry test error from /api/testerror'));
-    await Sentry.flush(2000);
     return NextResponse.json({ triggered: true });
   });
 }

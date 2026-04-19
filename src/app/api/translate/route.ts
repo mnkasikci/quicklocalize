@@ -60,7 +60,6 @@ Rules:
     });
   } catch (error) {
     Sentry.captureException(error);
-    Sentry.flush(2000);
     return NextResponse.json({ error: 'Translation failed. ' + stepsCompleted,"batches": JSON.stringify(allBatches), details: String(error) }, { status: 500 });
   }
   });
