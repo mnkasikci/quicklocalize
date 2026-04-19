@@ -1,4 +1,4 @@
-import { generateText } from 'ai';
+import { generateText, Output } from 'ai';
 
 // llama-3.3-70b-instruct-fp8-fast: 24k context window, no fixed output cap.
 // We claim 8192 tokens for output, leaving ~16k for input prompt.
@@ -62,16 +62,6 @@ function deepMerge(a: Record<string, any>, b: Record<string, any>): Record<strin
   return out;
 }
 
-function parseJsonFromText(text: string): Record<string, any> {
-  try {
-    return JSON.parse(text);
-  } catch {
-    const match = text.match(/```(?:json)?\s*([\s\S]+?)\s*```/) ?? text.match(/(\{[\s\S]+\})/);
-    if (!match) throw new Error(`AI returned non-JSON: ${text.slice(0, 200)}`);
-    return JSON.parse(match[1] ?? '{}');
-  }
-}
-
 // ---------------------------------------------------------------------------
 // Step A — Breakdown
 // ---------------------------------------------------------------------------
@@ -116,8 +106,9 @@ export async function runBatches(
         maxOutputTokens: MAX_OUTPUT_TOKENS,
         system: systemPrompt,
         prompt: `Translate this JSON to ${targetLanguage}:\n${JSON.stringify(batch, null, 2)}`,
+        output: Output.json(),
       });
-      return parseJsonFromText(text);
+      return JSON.parse(text);
     })
   );
 }
