@@ -1,0 +1,82 @@
+{
+  "nav": {
+    "github": "GitHub",
+    "issues": "Problèmes"
+  },
+  "hero": {
+    "title": "Localisez votre application, instantanément",
+    "description": "Téléchargez vos fichiers de localisation, ajoutez des informations sur votre application et obtenez des traductions intelligentes et sensibles au ton, alimentées par des LLM.",
+    "githubButton": "Dépôt GitHub"
+  },
+  "steps": {
+    "upload": "Étape 1 : Télécharger le fichier",
+    "translate": "Étape 2 : Ajouter le contexte et traduire"
+  },
+  "upload": {
+    "dropActive": "Déposez votre fichier ici",
+    "dropIdle": "Faites glisser et déposez votre fichier ici",
+    "browse": "ou cliquez pour parcourir (JSON / YAML)",
+    "invalidFile": "Veuillez télécharger un fichier JSON ou YAML valide",
+    "fileUploaded": "✓ Fichier téléchargé : {filename}"
+  },
+  "form": {
+    "contextLabel": "Contexte de l'application",
+    "contextHint": "(décrivez votre application)",
+    "contextPlaceholder": "par exemple, Il s'agit d'un jeu de puzzle casual pour enfants âgés de 6 à 10 ans. Utilisez un langage amical et ludique avec des émojis là où cela est approprié.",
+    "quickTemplates": "Modèles rapides :",
+    "languageLabel": "Langue cible",
+    "translateButton": "Traduire",
+    "translatingButton": "En cours de traduction...",
+    "fillFields": "Veuillez remplir tous les champs",
+    "templates": {
+      "casualGame": "Jeu mobile casual",
+      "b2b": "Logiciel d'entreprise B2B",
+      "educational": "Application éducative",
+      "health": "Santé et fitness",
+      "ecommerce": "Plateforme de commerce électronique"
+    }
+  },
+  "results": {
+    "title": "Résultat de la traduction",
+    "targetLanguage": "Langue cible",
+    "format": "Format",
+    "copy": "Copier",
+    "copied": "Copié !",
+    "download": "Télécharger",
+    "note": "Votre traduction est prête ! Copiez-la ou téléchargez-la au format JSON. Le fichier conserve la structure originale avec les valeurs traduites."
+  },
+  "status": {
+    "awaitingTitle": "En attente de traduction...",
+    "awaitingHint": "Remplissez le formulaire et cliquez sur traduire",
+    "uploadTitle": "📁 Téléchargez un fichier pour commencer",
+    "uploadHint": "Prend en charge les formats JSON et YAML"
+  },
+  "features": {
+    "title": "Pourquoi QuickLocalize ?",
+    "contextAware": {
+      "title": "Conscient du contexte",
+      "description": "Fournissez des informations sur votre application pour obtenir des traductions appropriées au ton"
+    },
+    "free": {
+      "title": "Gratuit pour toujours",
+      "description": "Aucune clé API, aucun paiement requis. Construit sur le niveau gratuit de Cloudflare."
+    },
+    "fast": {
+      "title": "Rapide et fiable",
+      "description": "Alimenté par Llama 3 sur le réseau de pointe Cloudflare dans le monde entier"
+    }
+  },
+  "footer": {
+    "copyright": "© 2024 QuickLocalize. Tous droits réservés.",
+    "madeWith": "Créé avec ❤️ pour les développeurs du monde entier",
+    "license": "Licence MIT",
+    "selfTranslated": "🌍 Ce site Web est disponible dans plusieurs langues — traduit à l'aide de QuickLocalize lui-même."
+  },
+  "errors": {
+    "uploadFirst": "Veuillez télécharger un fichier en premier",
+    "translationFailed": "Échec de la traduction"
+  },
+  "language": {
+    "select": "Sélectionner la langue"
+  }
+}
