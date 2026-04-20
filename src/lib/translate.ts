@@ -128,7 +128,7 @@ export async function runBatches(
         maxRetries: 10,
         minDelayInMs: 1000,
       },
-      customResultIdentifier: resultIdentifier
+      customResultIdentifier: resultIdentifier,
     });
     const results = await Promise.all(
       batches.map(async (batch) => {

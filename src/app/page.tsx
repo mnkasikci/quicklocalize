@@ -75,7 +75,9 @@ export default function Home() {
       </section>
 
       <section className="grid md:grid-cols-2 gap-8 items-start">
-        <div className={`space-y-6 transition-opacity ${isLoading ? 'opacity-50 pointer-events-none' : ''}`}>
+        <div
+          className={`space-y-6 transition-opacity ${isLoading ? 'opacity-50 pointer-events-none' : ''}`}
+        >
           <div className="card p-6">
             <h2 className="text-xl font-semibold mb-4">{t('steps.upload')}</h2>
             <FileUploader onFileUpload={handleFileUpload} />
