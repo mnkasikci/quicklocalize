@@ -2,9 +2,9 @@ import { generateText, Output } from 'ai';
 import * as Sentry from '@sentry/cloudflare';
 import { AsyncCaller, ResultIdentifier } from '@grapelaw/async-caller';
 
-// llama-3.3-70b-instruct-fp8-fast: 24k context window, no fixed output cap.
-// We claim 8192 tokens for output, leaving ~16k for input prompt.
-export const MAX_OUTPUT_TOKENS = 4096;
+// llama-3.3-70b-versatile on Groq: 128k context, 32k max output.
+// We claim 8192 tokens for output, leaving ~120k for input prompt.
+export const MAX_OUTPUT_TOKENS = 8192;
 const BUFFER_FACTOR = 0.8; // 20% buffer
 const CHARS_PER_TOKEN = 2; // conservative estimate for multilingual content
 export const MAX_BATCH_CHARS = Math.floor(MAX_OUTPUT_TOKENS * BUFFER_FACTOR * CHARS_PER_TOKEN); // ~13100
@@ -102,24 +102,6 @@ export async function runBatches(
   targetLanguage: string
 ): Promise<Array<Record<string, any>>> {
   try {
-    const resultIdentifier: ResultIdentifier = {
-      identifyError: (error: any) => {
-        if (error.message && String(error.message).includes('your daily free')) {
-          return {
-            dontRetry: true,
-            isRateLimited: true,
-          };
-        }
-        return {
-          dontRetry: false,
-          isRateLimited: false,
-        };
-      },
-      identifyResult: (result: any) => ({
-        isRateLimited: false,
-        isClientSideError: false,
-      }),
-    };
     const caller = new AsyncCaller({
       concurrency: 10,
       retryOptions: {
@@ -128,7 +110,6 @@ export async function runBatches(
         maxRetries: 10,
         minDelayInMs: 1000,
       },
-      customResultIdentifier: resultIdentifier,
     });
     const results = await Promise.all(
       batches.map(async (batch) => {

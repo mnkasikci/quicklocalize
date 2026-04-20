@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@ai-sdk/groq':
+        specifier: ^3.0.35
+        version: 3.0.35(zod@4.3.6)
       '@cloudflare/ai':
         specifier: ^1.0.0
         version: 1.2.2
@@ -2933,7 +2936,6 @@ snapshots:
       '@ai-sdk/provider': 3.0.8
       '@ai-sdk/provider-utils': 4.0.23(zod@4.3.6)
       zod: 4.3.6
-    optional: true
 
   '@ai-sdk/mistral@3.0.30(zod@4.3.6)':
     dependencies:

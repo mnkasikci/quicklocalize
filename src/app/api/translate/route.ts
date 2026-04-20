@@ -1,7 +1,6 @@
 import * as Sentry from '@sentry/cloudflare';
 import { NextRequest, NextResponse } from 'next/server';
-import { createAiGateway } from 'ai-gateway-provider';
-import { createUnified } from 'ai-gateway-provider/providers/unified';
+import { createGroq } from '@ai-sdk/groq';
 import { breakdown, runBatches, combine } from '@/lib/translate';
 import { withSentryHandler } from '@/lib/sentry';
 
@@ -26,17 +25,13 @@ export function POST(request: NextRequest) {
         return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
       }
 
-      const accountId = process.env.CF_ACCOUNT_ID;
-      const aigToken = process.env.CF_AIG_TOKEN;
-      const gatewayId = process.env.CF_AI_GATEWAY_ID;
-      if (!accountId || !aigToken || !gatewayId) {
+      const groqApiKey = process.env.GROQ_API_KEY;
+      if (!groqApiKey) {
         return NextResponse.json({ error: 'Missing AI configuration env vars' }, { status: 500 });
       }
 
-      const aigateway = createAiGateway({ accountId, gateway: gatewayId, apiKey: aigToken });
-      const model = aigateway(
-        createUnified()('workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast')
-      );
+      const groq = createGroq({ apiKey: groqApiKey });
+      const model = groq('llama-3.3-70b-versatile');
 
       const systemPrompt = `You are a professional localization expert. Translate the JSON values to ${targetLanguage}.
 
