@@ -99,7 +99,8 @@ export async function runBatches(
   batches: Array<Record<string, any>>,
   model: Parameters<typeof generateText>[0]['model'],
   systemPrompt: string,
-  targetLanguage: string
+  targetLanguage: string,
+  onProgress?: (completed: number, total: number) => void
 ): Promise<Array<Record<string, any>>> {
   try {
     const caller = new AsyncCaller({
@@ -111,6 +112,7 @@ export async function runBatches(
         minDelayInMs: 1000,
       },
     });
+    let completed = 0;
     const results = await Promise.all(
       batches.map(async (batch) => {
         const { text } = await caller.call(async () =>
@@ -122,7 +124,10 @@ export async function runBatches(
             output: Output.json(),
           })
         );
-        return JSON.parse(text);
+        const result = JSON.parse(text);
+        completed++;
+        onProgress?.(completed, batches.length);
+        return result;
       })
     );
     return results;

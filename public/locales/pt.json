@@ -72,6 +72,10 @@
     "license": "Licença MIT",
     "selfTranslated": "🌍 Este site está disponível em vários idiomas — traduzido usando o próprio QuickLocalize."
   },
+  "progress": {
+    "preparing": "Preparando lotes...",
+    "processing": "Lote {current} de {total} traduzido"
+  },
   "errors": {
     "uploadFirst": "Por favor, faça upload de um arquivo primeiro",
     "translationFailed": "Tradução falhou"

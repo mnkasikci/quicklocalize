@@ -72,6 +72,10 @@
     "license": "MIT 라이선스",
     "selfTranslated": "🌍 이 웹사이트는 여러 언어로 제공됩니다 — QuickLocalize 자체로 번역되었습니다."
   },
+  "progress": {
+    "preparing": "배치 준비 중...",
+    "processing": "{total}개 중 {current}번째 배치 번역 완료"
+  },
   "errors": {
     "uploadFirst": "먼저 파일을 업로드하세요",
     "translationFailed": "번역 실패"

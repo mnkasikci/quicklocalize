@@ -72,6 +72,10 @@
     "license": "MIT-Lizenz",
     "selfTranslated": "🌍 Diese Website ist in mehreren Sprachen verfügbar — übersetzt mit QuickLocalize selbst."
   },
+  "progress": {
+    "preparing": "Batches werden vorbereitet...",
+    "processing": "Batch {current} von {total} übersetzt"
+  },
   "errors": {
     "uploadFirst": "Bitte laden Sie zuerst eine Datei hoch",
     "translationFailed": "Übersetzung fehlgeschlagen"

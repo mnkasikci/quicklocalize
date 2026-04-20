@@ -72,6 +72,10 @@
     "license": "رخصة إم آي تي",
     "selfTranslated": "🌍 هذا الموقع متاح بلغات متعددة — تمت ترجمته باستخدام كويك لوكاليز نفسها."
   },
+  "progress": {
+    "preparing": "جارٍ تحضير الدُفعات...",
+    "processing": "تمت ترجمة الدُفعة {current} من {total}"
+  },
   "errors": {
     "uploadFirst": "يرجى رفع ملف أولاً",
     "translationFailed": "فشلت الترجمة"

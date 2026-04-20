@@ -72,6 +72,10 @@
     "license": "Лицензия MIT",
     "selfTranslated": "🌍 Этот сайт доступен на нескольких языках — переведен с помощью QuickLocalize самого себя."
   },
+  "progress": {
+    "preparing": "Подготовка пакетов...",
+    "processing": "Переведён пакет {current} из {total}"
+  },
   "errors": {
     "uploadFirst": "Пожалуйста, загрузите файл сначала",
     "translationFailed": "Перевод не удался"

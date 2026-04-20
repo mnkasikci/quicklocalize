@@ -72,6 +72,10 @@
     "license": "MIT 许可证",
     "selfTranslated": "🌍 本网站有多种语言版本 —— 使用 QuickLocalize 自身翻译。"
   },
+  "progress": {
+    "preparing": "正在准备批次...",
+    "processing": "已翻译第 {current} / {total} 批"
+  },
   "errors": {
     "uploadFirst": "请先上传文件",
     "translationFailed": "翻译失败"

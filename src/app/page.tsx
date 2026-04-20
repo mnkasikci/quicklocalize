@@ -12,6 +12,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [progress, setProgress] = useState<{ completed: number; total: number } | null>(null);
   const { t } = useLocale();
 
   const handleFileUpload = (file: File) => {
@@ -30,6 +31,7 @@ export default function Home() {
     setIsLoading(true);
     setHasSubmitted(true);
     setError(null);
+    setProgress(null);
 
     try {
       const text = await uploadedFile.text();
@@ -46,14 +48,44 @@ export default function Home() {
         }),
       });
 
-      if (!response.ok) throw new Error(t('errors.translationFailed'));
+      if (!response.ok || !response.body) throw new Error(t('errors.translationFailed'));
 
-      const result = await response.json();
-      setTranslationResult(result);
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = '';
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split('\n');
+        buffer = lines.pop() ?? '';
+
+        for (const line of lines) {
+          if (!line.startsWith('data: ')) continue;
+          const event = JSON.parse(line.slice(6));
+
+          if (event.type === 'start') {
+            setProgress({ completed: 0, total: event.total });
+          } else if (event.type === 'progress') {
+            setProgress({ completed: event.completed, total: event.total });
+          } else if (event.type === 'complete') {
+            setTranslationResult({
+              success: true,
+              translated: event.translated,
+              targetLanguage: event.targetLanguage,
+              format: event.format,
+            });
+          } else if (event.type === 'error') {
+            throw new Error(event.error || t('errors.translationFailed'));
+          }
+        }
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : t('errors.translationFailed'));
     } finally {
       setIsLoading(false);
+      setProgress(null);
     }
   };
 
@@ -111,8 +143,32 @@ export default function Home() {
           )}
           {!translationResult && isLoading && (
             <div className="card p-6 text-center text-slate-400">
-              <p>{t('status.awaitingTitle')}</p>
-              <p className="text-sm mt-2">{t('status.awaitingHint')}</p>
+              {progress ? (
+                <>
+                  <p className="font-medium text-slate-300">
+                    {t('progress.processing', {
+                      current: String(progress.completed),
+                      total: String(progress.total),
+                    })}
+                  </p>
+                  <div className="mt-4 bg-slate-700 rounded-full h-2 overflow-hidden">
+                    <div
+                      className="bg-blue-500 h-2 rounded-full transition-all duration-500"
+                      style={{
+                        width: `${Math.round((progress.completed / progress.total) * 100)}%`,
+                      }}
+                    />
+                  </div>
+                  <p className="text-xs mt-2 text-slate-500">
+                    {Math.round((progress.completed / progress.total) * 100)}%
+                  </p>
+                </>
+              ) : (
+                <>
+                  <p>{t('progress.preparing')}</p>
+                  <p className="text-sm mt-2">{t('status.awaitingHint')}</p>
+                </>
+              )}
             </div>
           )}
           {!uploadedFile && (
