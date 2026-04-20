@@ -1,13 +1,48 @@
 import { generateText, Output } from 'ai';
 import * as Sentry from '@sentry/cloudflare';
-import { AsyncCaller, ResultIdentifier } from '@grapelaw/async-caller';
+import { AsyncCaller } from '@grapelaw/async-caller';
 
-// llama-3.3-70b-versatile on Groq: 128k context, 32k max output.
-// We claim 8192 tokens for output, leaving ~120k for input prompt.
 export const MAX_OUTPUT_TOKENS = 8192;
-const BUFFER_FACTOR = 0.8; // 20% buffer
+const DEFAULT_CONTEXT_WINDOW_TOKENS = 128_000; // gpt-4o-mini default via Cloudflare AI Gateway
+const BUFFER_FACTOR = 0.8; // leave headroom for token estimation + model variance
 const CHARS_PER_TOKEN = 2; // conservative estimate for multilingual content
-export const MAX_BATCH_CHARS = Math.floor(MAX_OUTPUT_TOKENS * BUFFER_FACTOR * CHARS_PER_TOKEN); // ~13100
+const RESERVED_PROMPT_TOKENS = 2_000; // system prompt + "Translate this JSON..." wrapper + formatting
+
+function clampInt(n: number, min: number, max: number): number {
+  if (!Number.isFinite(n)) return min;
+  return Math.min(max, Math.max(min, Math.floor(n)));
+}
+
+function resolveMaxBatchChars(options?: BreakdownOptions): number {
+  const contextWindow = clampInt(
+    options?.contextWindowTokens ?? DEFAULT_CONTEXT_WINDOW_TOKENS,
+    4096,
+    2_000_000
+  );
+  const maxOutputTokens = clampInt(
+    options?.maxOutputTokens ?? MAX_OUTPUT_TOKENS,
+    256,
+    contextWindow
+  );
+  const reservedPromptTokens = clampInt(
+    options?.reservedPromptTokens ?? RESERVED_PROMPT_TOKENS,
+    0,
+    contextWindow
+  );
+
+  // Total context window must cover: system+prompt+input JSON + output JSON.
+  // We treat input JSON as the primary variable and leave a buffer.
+  const availableForInputTokens = Math.max(
+    256,
+    contextWindow - maxOutputTokens - reservedPromptTokens
+  );
+  const bufferedInputTokens = Math.floor(
+    availableForInputTokens * (options?.bufferFactor ?? BUFFER_FACTOR)
+  );
+  const charsPerToken = options?.charsPerToken ?? CHARS_PER_TOKEN;
+
+  return Math.max(1024, Math.floor(bufferedInputTokens * charsPerToken));
+}
 
 // ---------------------------------------------------------------------------
 // Internal helpers
@@ -68,17 +103,29 @@ function deepMerge(a: Record<string, any>, b: Record<string, any>): Record<strin
 // Step A — Breakdown
 // ---------------------------------------------------------------------------
 
-export function breakdown(obj: Record<string, any>): Array<Record<string, any>> {
+export interface BreakdownOptions {
+  contextWindowTokens?: number;
+  maxOutputTokens?: number;
+  reservedPromptTokens?: number;
+  bufferFactor?: number;
+  charsPerToken?: number;
+}
+
+export function breakdown(
+  obj: Record<string, any>,
+  options?: BreakdownOptions
+): Array<Record<string, any>> {
   const leaves = flattenLeaves(obj);
   if (leaves.length === 0) return [obj];
 
+  const maxBatchChars = resolveMaxBatchChars(options);
   const batches: Array<Record<string, any>> = [];
   let bucket: Leaf[] = [];
   let chars = 0;
 
   for (const leaf of leaves) {
     const cost = leafCost(leaf);
-    if (chars + cost > MAX_BATCH_CHARS && bucket.length > 0) {
+    if (chars + cost > maxBatchChars && bucket.length > 0) {
       batches.push(fromLeaves(bucket));
       bucket = [];
       chars = 0;

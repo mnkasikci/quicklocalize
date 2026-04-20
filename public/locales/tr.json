@@ -6,7 +6,7 @@
   "hero": {
     "title": "Uygulamanızı Anında Yerelleştirin",
     "description": "Yerelleştirme dosyalarınızı yükleyin, uygulamanız hakkında bağlam ekleyin ve LLM’ler tarafından desteklenen, tona duyarlı akıllı çeviriler elde edin.",
-    "githubButton": "GitHub Deposu"
+    "githubButton": "GitHub Repository'si"
   },
   "steps": {
     "upload": "Adım 1: Dosya Yükle",

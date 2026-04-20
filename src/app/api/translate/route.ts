@@ -5,6 +5,8 @@ import { createOpenAI } from '@ai-sdk/openai';
 import { createAnthropic } from '@ai-sdk/anthropic';
 import { breakdown, runBatches, combine } from '@/lib/translate';
 import type { LanguageModel } from 'ai';
+import { createAiGateway } from 'ai-gateway-provider';
+import { createUnified } from 'ai-gateway-provider/providers/unified';
 
 export const runtime = 'edge';
 
@@ -38,14 +40,20 @@ function resolveModel(byoak?: BYOAKPayload): LanguageModel {
   // Default provider: Cloudflare AI Gateway (OpenAI-compatible).
   // Expected base URL form:
   //   https://gateway.ai.cloudflare.com/v1/<account_id>/<gateway_name>/openai
-  const cloudflareAIGatewayBaseURL = process.env.CF_AI_GATEWAY_BASE_URL;
-  const cloudflareAIGatewayApiKey = process.env.CF_AI_GATEWAY_API_KEY;
-  const cloudflareAIGatewayModelId = process.env.CF_AI_GATEWAY_MODEL_ID ?? 'gpt-4o-mini';
 
-  return createOpenAI({
-    apiKey: cloudflareAIGatewayApiKey,
-    baseURL: cloudflareAIGatewayBaseURL,
-  })(cloudflareAIGatewayModelId);
+  const cfAccountId = process.env.CF_ACCOUNT_ID;
+  if (!cfAccountId) {
+    throw new Error('CF_ACCOUNT_ID is not set');
+  }
+
+  const aigateway = createAiGateway({
+    accountId: cfAccountId,
+    gateway: 'quicklocalize',
+    apiKey: process.env.CF_AI_GATEWAY_API_KEY,
+  });
+  const unified = createUnified();
+
+  return aigateway(unified('gpt-4o-mini'));
 }
 
 export function POST(request: NextRequest) {
@@ -85,7 +93,7 @@ Rules:
 - Only translate string values
 - Maintain the exact same nested structure`;
 
-      const batches = breakdown(file);
+      const batches = breakdown(file, { contextWindowTokens: byoak?.contextLength });
       send({ type: 'start', total: batches.length });
 
       const results = await runBatches(
