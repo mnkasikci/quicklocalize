@@ -83,6 +83,16 @@
   "language": {
     "select": "Sprache auswählen"
   },
+  "recentFiles": {
+    "title": "Zuletzt übersetzte Dateien",
+    "saveHistory": "Verlauf speichern",
+    "historyOffMessage": "Verlauf ist deaktiviert. Neue Übersetzungen werden nicht gespeichert.",
+    "empty": "Noch keine übersetzten Dateien. Ihre übersetzten Dateien werden hier angezeigt.",
+    "delete": "Löschen",
+    "downloadSource": "Quelle",
+    "downloadTranslated": "Übersetzt",
+    "expiresIn": "Läuft in {days}d"
+  },
   "byoak": {
     "toggle": "Eigenen API-Schlüssel verwenden",
     "toggleHint": "Bessere Ratenlimits & Modellzugriff",

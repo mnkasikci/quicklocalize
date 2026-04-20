@@ -83,6 +83,16 @@
   "language": {
     "select": "言語を選択"
   },
+  "recentFiles": {
+    "title": "最近の翻訳ファイル",
+    "saveHistory": "履歴を保存",
+    "historyOffMessage": "履歴が無効です。新しい翻訳は保存されません。",
+    "empty": "まだ翻訳されたファイルがありません。翻訳されたファイルはここに表示されます。",
+    "delete": "削除",
+    "downloadSource": "ソース",
+    "downloadTranslated": "翻訳済み",
+    "expiresIn": "有効期限: {days}d"
+  },
   "byoak": {
     "toggle": "自分のAPIキーを使用",
     "toggleHint": "レート制限の改善＆モデルへのアクセス",

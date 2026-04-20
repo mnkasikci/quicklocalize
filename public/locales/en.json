@@ -83,6 +83,16 @@
   "language": {
     "select": "Select language"
   },
+  "recentFiles": {
+    "title": "Recent Files",
+    "saveHistory": "Save history",
+    "historyOffMessage": "History is off. New translations won't be saved.",
+    "empty": "No recent files yet. Your translated files will appear here.",
+    "delete": "Delete",
+    "downloadSource": "Source",
+    "downloadTranslated": "Translated",
+    "expiresIn": "Expires in {days}d"
+  },
   "byoak": {
     "toggle": "Use your own API key",
     "toggleHint": "Better rate limits & model access",

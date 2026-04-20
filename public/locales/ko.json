@@ -83,6 +83,16 @@
   "language": {
     "select": "언어 선택"
   },
+  "recentFiles": {
+    "title": "최근 번역 파일",
+    "saveHistory": "히스토리 저장",
+    "historyOffMessage": "히스토리가 비활성화되었습니다. 새로운 번역은 저장되지 않습니다.",
+    "empty": "아직 번역된 파일이 없습니다. 번역된 파일은 여기에 표시됩니다.",
+    "delete": "삭제",
+    "downloadSource": "소스",
+    "downloadTranslated": "번역됨",
+    "expiresIn": "만료: {days}d"
+  },
   "byoak": {
     "toggle": "자체 API 키 사용",
     "toggleHint": "더 나은 속도 제한 및 모델 접근",

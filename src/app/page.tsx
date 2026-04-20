@@ -1,11 +1,16 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FileUploader } from '@/components/FileUploader';
 import { TranslationForm } from '@/components/TranslationForm';
 import { ResultsDisplay } from '@/components/ResultsDisplay';
 import { ApiKeyConfig, DEFAULT_BYOAK, type BYOAKConfig } from '@/components/ApiKeyConfig';
+import { RecentFilesPanel, type RecentFile, getPreviewLines, ONE_WEEK_MS } from '@/components/RecentFilesPanel';
 import { useLocale } from '@/context/LocaleContext';
+
+const LS_RECENT = 'ql_recent_files';
+const LS_HISTORY = 'ql_history_enabled';
+const MAX_RECENT = 10;
 
 export default function Home() {
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
@@ -15,7 +20,37 @@ export default function Home() {
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [progress, setProgress] = useState<{ completed: number; total: number } | null>(null);
   const [byoakConfig, setByoakConfig] = useState<BYOAKConfig>(DEFAULT_BYOAK);
+  const [recentFiles, setRecentFiles] = useState<RecentFile[]>([]);
+  const [historyEnabled, setHistoryEnabled] = useState(true);
   const { t } = useLocale();
+
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem(LS_RECENT);
+      if (stored) {
+        const parsed: RecentFile[] = JSON.parse(stored);
+        const live = parsed.filter((f) => f.expiresAt > Date.now());
+        if (live.length !== parsed.length) {
+          localStorage.setItem(LS_RECENT, JSON.stringify(live));
+        }
+        setRecentFiles(live);
+      }
+      setHistoryEnabled(localStorage.getItem(LS_HISTORY) !== 'false');
+    } catch {}
+  }, []);
+
+  const handleToggleHistory = (enabled: boolean) => {
+    setHistoryEnabled(enabled);
+    localStorage.setItem(LS_HISTORY, String(enabled));
+  };
+
+  const handleDeleteRecentFile = (id: string) => {
+    setRecentFiles((prev) => {
+      const updated = prev.filter((f) => f.id !== id);
+      localStorage.setItem(LS_RECENT, JSON.stringify(updated));
+      return updated;
+    });
+  };
 
   const handleFileUpload = (file: File) => {
     setUploadedFile(file);
@@ -89,6 +124,26 @@ export default function Home() {
               targetLanguage: event.targetLanguage,
               format: event.format,
             });
+            if (historyEnabled) {
+              const now = Date.now();
+              const newEntry: RecentFile = {
+                id: crypto.randomUUID(),
+                sourceFileName: uploadedFile.name,
+                targetLanguage: event.targetLanguage,
+                timestamp: now,
+                expiresAt: now + ONE_WEEK_MS,
+                preview: getPreviewLines(event.translated),
+                sourceContent: fileContent,
+                translatedContent: event.translated,
+              };
+              setRecentFiles((prev) => {
+                const updated = [newEntry, ...prev].slice(0, MAX_RECENT);
+                try {
+                  localStorage.setItem(LS_RECENT, JSON.stringify(updated));
+                } catch {}
+                return updated;
+              });
+            }
           } else if (event.type === 'error') {
             throw new Error(event.error || t('errors.translationFailed'));
           }
@@ -194,6 +249,13 @@ export default function Home() {
           )}
         </div>
       </section>
+
+      <RecentFilesPanel
+        files={recentFiles}
+        historyEnabled={historyEnabled}
+        onDelete={handleDeleteRecentFile}
+        onToggleHistory={handleToggleHistory}
+      />
 
       <section className="space-y-6">
         <h2 className="text-2xl font-bold text-center">{t('features.title')}</h2>

@@ -83,6 +83,16 @@
   "language": {
     "select": "Seleziona lingua"
   },
+  "recentFiles": {
+    "title": "File tradotti recenti",
+    "saveHistory": "Salva cronologia",
+    "historyOffMessage": "La cronologia è disattivata. Le nuove traduzioni non saranno salvate.",
+    "empty": "Ancora nessun file tradotto. I tuoi file tradotti appariranno qui.",
+    "delete": "Elimina",
+    "downloadSource": "Origine",
+    "downloadTranslated": "Tradotto",
+    "expiresIn": "Scade in {days}d"
+  },
   "byoak": {
     "toggle": "Usa la tua chiave API",
     "toggleHint": "Limiti di richiesta migliori e accesso ai modelli",

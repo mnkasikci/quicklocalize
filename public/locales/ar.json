@@ -83,6 +83,16 @@
   "language": {
     "select": "اختر اللغة"
   },
+  "recentFiles": {
+    "title": "الملفات المؤخرة",
+    "saveHistory": "حفظ السجل",
+    "historyOffMessage": "السجل معطل. لن يتم حفظ الترجمات الجديدة.",
+    "empty": "لا يوجد ملفات مؤخرة بعد. سيظهر الملفات المترجمة هنا.",
+    "delete": "حذف",
+    "downloadSource": "المصدر",
+    "downloadTranslated": "المترجم",
+    "expiresIn": "ينتهي في {days}d"
+  },
   "byoak": {
     "toggle": "استخدام مفتاح API الخاص بك",
     "toggleHint": "حدود معدل أفضل وإتاحة للنماذج",

@@ -83,6 +83,16 @@
   "language": {
     "select": "选择语言"
   },
+  "recentFiles": {
+    "title": "最近翻译的文件",
+    "saveHistory": "保存历史",
+    "historyOffMessage": "历史已关闭。新翻译将不会保存。",
+    "empty": "还没有翻译的文件。您的翻译文件将显示在这里。",
+    "delete": "删除",
+    "downloadSource": "源文件",
+    "downloadTranslated": "翻译文件",
+    "expiresIn": "过期时间: {days}d"
+  },
   "byoak": {
     "toggle": "使用你自己的 API 密钥",
     "toggleHint": "更好的速率限制与模型访问",

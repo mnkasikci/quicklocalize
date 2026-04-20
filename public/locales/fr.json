@@ -83,6 +83,16 @@
   "language": {
     "select": "Sélectionner la langue"
   },
+  "recentFiles": {
+    "title": "Fichiers traduits récents",
+    "saveHistory": "Enregistrer l'historique",
+    "historyOffMessage": "L'historique est désactivé. Les nouvelles traductions ne seront pas enregistrées.",
+    "empty": "Aucun fichier traduit encore. Vos fichiers traduits apparaîtront ici.",
+    "delete": "Supprimer",
+    "downloadSource": "Source",
+    "downloadTranslated": "Traduit",
+    "expiresIn": "Expire dans {days}d"
+  },
   "byoak": {
     "toggle": "Utiliser votre propre clé API",
     "toggleHint": "Meilleures limites de débit et accès aux modèles",
