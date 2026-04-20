@@ -53,7 +53,7 @@ function resolveModel(byoak?: BYOAKPayload): LanguageModel {
   });
   const unified = createUnified();
 
-  return aigateway(unified('gpt-4o-mini'));
+  return aigateway(unified('workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast'));
 }
 
 export function POST(request: NextRequest) {

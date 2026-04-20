@@ -3,7 +3,7 @@ import * as Sentry from '@sentry/cloudflare';
 import { AsyncCaller } from '@grapelaw/async-caller';
 
 export const MAX_OUTPUT_TOKENS = 8192;
-const DEFAULT_CONTEXT_WINDOW_TOKENS = 128_000; // gpt-4o-mini default via Cloudflare AI Gateway
+const DEFAULT_CONTEXT_WINDOW_TOKENS = 128_000; // workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast default via Cloudflare AI Gateway
 const BUFFER_FACTOR = 0.8; // leave headroom for token estimation + model variance
 const CHARS_PER_TOKEN = 2; // conservative estimate for multilingual content
 const RESERVED_PROMPT_TOKENS = 2_000; // system prompt + "Translate this JSON..." wrapper + formatting
