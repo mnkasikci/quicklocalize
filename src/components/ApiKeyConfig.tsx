@@ -57,7 +57,8 @@ export function ApiKeyConfig({ value, onChange, disabled = false }: ApiKeyConfig
   const [modelsError, setModelsError] = useState('');
   const [isCustom, setIsCustom] = useState(false);
   const [customModelText, setCustomModelText] = useState('');
-  const [contextChanged, setContextChanged] = useState(false);
+  const [contextChangedHigher, setContextChangedHigher] = useState(false);
+  const [contextChangedLower, setContextChangedLower] = useState(false);
   const defaultContextRef = useRef<number>(DEFAULT_CONTEXT[value.provider] ?? 128000);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -141,7 +142,8 @@ export function ApiKeyConfig({ value, onChange, disabled = false }: ApiKeyConfig
   const handleProviderChange = (provider: BYOAKConfig['provider']) => {
     const newCtx = DEFAULT_CONTEXT[provider] ?? 128000;
     defaultContextRef.current = newCtx;
-    setContextChanged(false);
+    setContextChangedHigher(false);
+    setContextChangedLower(false);
     setModels([]);
     setModelsStatus('idle');
     setIsCustom(false);
@@ -169,7 +171,8 @@ export function ApiKeyConfig({ value, onChange, disabled = false }: ApiKeyConfig
       const model = models.find((m) => m.id === modelId);
       const ctx = model?.contextLength ?? DEFAULT_CONTEXT[value.provider] ?? 128000;
       defaultContextRef.current = ctx;
-      setContextChanged(false);
+      setContextChangedHigher(false);
+      setContextChangedLower(false);
       const updated = { ...value, modelId, contextLength: ctx };
       onChange(updated);
       if (rememberKey) save(updated);
@@ -184,7 +187,8 @@ export function ApiKeyConfig({ value, onChange, disabled = false }: ApiKeyConfig
   };
 
   const handleContextChange = (contextLength: number) => {
-    setContextChanged(contextLength !== defaultContextRef.current);
+    setContextChangedHigher(contextLength > defaultContextRef.current);
+    setContextChangedLower(contextLength < defaultContextRef.current);
     const updated = { ...value, contextLength };
     onChange(updated);
     if (rememberKey) save(updated);
@@ -364,10 +368,23 @@ export function ApiKeyConfig({ value, onChange, disabled = false }: ApiKeyConfig
             <div>
               <p className="text-xs font-medium text-slate-400 mb-2 flex items-center gap-2 flex-wrap">
                 {t('byoak.contextLength')}
-                {contextChanged && (
+                {contextChangedHigher && (
                   <span className="text-yellow-400 text-xs inline-flex items-center gap-1 flex-wrap">
                     <AlertTriangle size={10} className="shrink-0" />
-                    {t('byoak.contextWarning')}
+                    {t('byoak.contextHigherWarning')}
+                    <button
+                      type="button"
+                      onClick={() => handleContextChange(defaultContextRef.current)}
+                      className="underline underline-offset-2 hover:text-yellow-300 transition-colors"
+                    >
+                      {t('byoak.contextReset')}
+                    </button>
+                  </span>
+                )}
+                {contextChangedLower && (
+                  <span className="text-yellow-400 text-xs inline-flex items-center gap-1 flex-wrap">
+                    <AlertTriangle size={10} className="shrink-0" />
+                    {t('byoak.contextLowerWarning')}
                     <button
                       type="button"
                       onClick={() => handleContextChange(defaultContextRef.current)}
