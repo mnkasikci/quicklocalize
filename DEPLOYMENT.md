@@ -1,6 +1,6 @@
-# Deployment Guide for QuickLocalize
+# Deployment Guide for Transly
 
-This guide covers deploying QuickLocalize to Cloudflare Pages and configuring Workers AI.
+This guide covers deploying Transly to Cloudflare Pages and configuring Workers AI.
 
 ## Prerequisites
 
@@ -32,7 +32,7 @@ This guide covers deploying QuickLocalize to Cloudflare Pages and configuring Wo
 ### 2.1 Create Repository
 
 1. Go to [GitHub.com](https://github.com/new)
-2. Repository name: `quicklocalize`
+2. Repository name: `transly`
 3. Description: "Free, open-source localization tool powered by LLMs"
 4. Make it **Public** (for open source)
 5. Initialize with README? **No** (we already have one)
@@ -41,13 +41,13 @@ This guide covers deploying QuickLocalize to Cloudflare Pages and configuring Wo
 ### 2.2 Push Local Code
 
 ```bash
-cd /path/to/quicklocalize
+cd /path/to/transly
 
 git init
 git add .
-git commit -m "Initial commit: QuickLocalize project setup"
+git commit -m "Initial commit: Transly project setup"
 git branch -M main
-git remote add origin https://github.com/YOUR-USERNAME/quicklocalize.git
+git remote add origin https://github.com/YOUR-USERNAME/transly.git
 git push -u origin main
 ```
 
@@ -59,7 +59,7 @@ git push -u origin main
 2. Go to **Workers & Pages** → **Pages**
 3. Click **Create application** → **Connect to Git**
 4. Select **GitHub** and authorize Cloudflare
-5. Select `quicklocalize` repository
+5. Select `transly` repository
 6. Click **Begin setup**
 
 ### 3.2 Build Settings
@@ -77,7 +77,7 @@ git push -u origin main
 
 ### 4.1 Add Cloudflare AI Token
 
-1. In Cloudflare Pages → **quicklocalize** → **Settings** → **Environment variables**
+1. In Cloudflare Pages → **transly** → **Settings** → **Environment variables**
 2. Add production variable:
 
    ```
@@ -96,12 +96,12 @@ git push -u origin main
 
 ## Step 5: Test Deployment
 
-1. Your site will be live at: `quicklocalize.pages.dev`
+1. Your site will be live at: `transly.pages.dev`
 2. Visit the URL to confirm deployment
 3. Test the translation API:
 
 ```bash
-curl -X POST https://quicklocalize.pages.dev/api/translate \
+curl -X POST https://transly.pages.dev/api/translate \
   -H "Content-Type: application/json" \
   -d '{
     "file": {"greeting": "Hello"},
@@ -114,8 +114,8 @@ curl -X POST https://quicklocalize.pages.dev/api/translate \
 
 ### 6.1 Add Domain to Cloudflare
 
-1. In Cloudflare Pages → **quicklocalize** → **Custom domain**
-2. Enter your domain (e.g., `quicklocalize.com`)
+1. In Cloudflare Pages → **transly** → **Custom domain**
+2. Enter your domain (e.g., `transly.dev`, already published the domain on Cloudflare)
 3. Follow instructions to update your domain's nameservers
 
 ### 6.2 Update wrangler.toml
@@ -123,7 +123,7 @@ curl -X POST https://quicklocalize.pages.dev/api/translate \
 ```toml
 [env.production]
 routes = [
-  { pattern = "api.quicklocalize.com/api/*", zone_name = "quicklocalize.com" }
+  { pattern = "api.transly.dev/api/*", zone_name = "transly.dev" }
 ]
 ```
 
@@ -142,12 +142,12 @@ Your deployment is now using Cloudflare Workers AI for translations.
 ### View Logs
 
 ```bash
-wrangler tail --project-name quicklocalize
+wrangler tail --project-name transly
 ```
 
 ### View Analytics
 
-1. **Cloudflare Dashboard** → **Pages** → **quicklocalize** → **Analytics**
+1. **Cloudflare Dashboard** → **Pages** → **transly** → **Analytics**
 2. Monitor requests, bandwidth, and errors
 
 ## Cost Management
@@ -182,14 +182,14 @@ Monitor your costs:
 
 Changes pushed to `main` branch automatically deploy to production. To prevent this:
 
-1. **Cloudflare Dashboard** → **Pages** → **quicklocalize** → **Settings**
+1. **Cloudflare Dashboard** → **Pages** → **transly** → **Settings**
 2. Under **Production deployments**, set to **Manual**
 
 ## Rollback
 
 To revert to previous deployment:
 
-1. **Pages** → **quicklocalize** → **Deployments**
+1. **Pages** → **transly** → **Deployments**
 2. Click on previous deployment
 3. Click **Rollback to this deployment**
 

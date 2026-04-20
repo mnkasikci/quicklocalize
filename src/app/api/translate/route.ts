@@ -26,14 +26,26 @@ interface TranslateRequest {
 function resolveModel(byoak?: BYOAKPayload): LanguageModel {
   if (byoak?.apiKey && byoak?.modelId) {
     switch (byoak.provider) {
-      case 'openai':     return createOpenAI({ apiKey: byoak.apiKey })(byoak.modelId);
-      case 'anthropic':  return createAnthropic({ apiKey: byoak.apiKey })(byoak.modelId);
-      case 'groq':       return createGroq({ apiKey: byoak.apiKey })(byoak.modelId);
+      case 'openai':
+        return createOpenAI({ apiKey: byoak.apiKey })(byoak.modelId);
+      case 'anthropic':
+        return createAnthropic({ apiKey: byoak.apiKey })(byoak.modelId);
+      case 'groq':
+        return createGroq({ apiKey: byoak.apiKey })(byoak.modelId);
     }
   }
-  const groqApiKey = process.env.GROQ_API_KEY;
-  if (!groqApiKey) throw new Error('Missing AI configuration env vars');
-  return createGroq({ apiKey: groqApiKey })('llama-3.3-70b-versatile');
+
+  // Default provider: Cloudflare AI Gateway (OpenAI-compatible).
+  // Expected base URL form:
+  //   https://gateway.ai.cloudflare.com/v1/<account_id>/<gateway_name>/openai
+  const cloudflareAIGatewayBaseURL = process.env.CF_AI_GATEWAY_BASE_URL;
+  const cloudflareAIGatewayApiKey = process.env.CF_AI_GATEWAY_API_KEY;
+  const cloudflareAIGatewayModelId = process.env.CF_AI_GATEWAY_MODEL_ID ?? 'gpt-4o-mini';
+
+  return createOpenAI({
+    apiKey: cloudflareAIGatewayApiKey,
+    baseURL: cloudflareAIGatewayBaseURL,
+  })(cloudflareAIGatewayModelId);
 }
 
 export function POST(request: NextRequest) {

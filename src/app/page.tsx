@@ -178,7 +178,7 @@ export default function Home() {
         <p className="text-lg text-slate-300 max-w-2xl mx-auto">{t('hero.description')}</p>
         <div className="flex gap-4 justify-center pt-4">
           <a
-            href="https://github.com/mnkasikci/quicklocalize"
+            href="https://github.com/mnkasikci/transly"
             target="_blank"
             rel="noopener noreferrer"
             className="px-6 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition font-medium"

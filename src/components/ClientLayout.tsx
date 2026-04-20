@@ -15,12 +15,12 @@ function LayoutShell({ children }: { children: React.ReactNode }) {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-              QuickLocalize
+              Transly
             </span>
             <div className="flex items-center gap-4">
               <div className="hidden items-center gap-4 md:flex">
                 <a
-                  href="https://github.com/mnkasikci/quicklocalize"
+                  href="https://github.com/mnkasikci/transly"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-slate-300 hover:text-white transition"
@@ -28,7 +28,7 @@ function LayoutShell({ children }: { children: React.ReactNode }) {
                   {t('nav.github')}
                 </a>
                 <a
-                  href="https://github.com/mnkasikci/quicklocalize/issues"
+                  href="https://github.com/mnkasikci/transly/issues"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-slate-300 hover:text-white transition"
@@ -54,7 +54,7 @@ function LayoutShell({ children }: { children: React.ReactNode }) {
             </div>
             <div className="flex gap-4">
               <a
-                href="https://github.com/mnkasikci/quicklocalize/blob/main/LICENSE"
+                href="https://github.com/mnkasikci/transly/blob/main/LICENSE"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm text-slate-400 hover:text-white transition"

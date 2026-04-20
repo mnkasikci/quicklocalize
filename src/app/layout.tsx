@@ -3,15 +3,15 @@ import './globals.css';
 import { ClientLayout } from '@/components/ClientLayout';
 
 export const metadata: Metadata = {
-  title: 'QuickLocalize - Free LLM-Powered Localization',
+  title: 'Transly - Free LLM-Powered Localization',
   description:
     'Upload your JSON files and get context-aware translations powered by Cloudflare Workers AI',
   keywords: ['localization', 'translation', 'i18n', 'JSON', 'LLM', 'free'],
-  authors: [{ name: 'QuickLocalize Community' }],
+  authors: [{ name: 'Transly Community' }],
   openGraph: {
     type: 'website',
-    url: 'https://quicklocalize.pages.dev',
-    title: 'QuickLocalize',
+    url: 'https://transly.pages.dev',
+    title: 'Transly',
     description: 'Free, open-source localization tool powered by LLMs and Cloudflare Workers AI',
   },
 };

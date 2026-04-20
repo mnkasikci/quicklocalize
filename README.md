@@ -1,4 +1,4 @@
-# QuickLocalize
+# Transly
 
 > Free, open-source localization tool powered by LLMs. Upload your JSON files, provide context about your app, and get accurate context-aware translations.
 
@@ -32,8 +32,8 @@
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/quicklocalize.git
-cd quicklocalize
+git clone https://github.com/yourusername/transly.git
+cd transly
 ```
 
 ### 2. Install Dependencies
@@ -62,7 +62,7 @@ Visit `http://localhost:3000` to see your app.
 ## 📦 Project Structure
 
 ```
-quicklocalize/
+transly/
 ├── src/
 │   ├── app/              # Next.js app directory
 │   ├── components/       # React components
@@ -138,7 +138,7 @@ wrangler login
 npm run deploy
 ```
 
-Your app will be live on `quicklocalize.pages.dev`
+Your app will be live on `transly.pages.dev`
 
 ### 4. Custom Domain (Optional)
 
@@ -217,7 +217,7 @@ Found a bug? Please open an issue on GitHub with:
 - [x] Basic file upload functionality
 - [x] JSON support
 - [x] Progress tracking
-- [ ] Bring Your Own API Key (use your own credentials for LLM access to improve results and unlock higher rate limits)
+- [x] Bring Your Own API Key (use your own credentials for LLM access to improve results and unlock higher rate limits)
 - [ ] YAML support
 - [ ] Bulk file processing
 - [ ] Translation memory & consistency checking
@@ -226,7 +226,7 @@ Found a bug? Please open an issue on GitHub with:
 - [ ] Multi-file batch operations
 - [ ] Translation quality metrics
 - [ ] Integration with version control systems
-- [ ] Web UI improvements & localization of QuickLocalize itself
+- [ ] Web UI improvements & localization of Transly itself
 
 ## 📄 License
 

@@ -1,0 +1,151 @@
+{
+  "nav": {
+    "github": "GitHub",
+    "issues": "Sorunlar"
+  },
+  "hero": {
+    "title": "Uygulamanızı Anında Yerelleştirin",
+    "description": "Yerelleştirme dosyalarınızı yükleyin, uygulamanız hakkında bağlam ekleyin ve LLM’ler tarafından desteklenen, tona duyarlı akıllı çeviriler elde edin.",
+    "githubButton": "GitHub Deposu"
+  },
+  "steps": {
+    "upload": "Adım 1: Dosya Yükle",
+    "translate": "Adım 2: Bağlam Ekle & Çevir"
+  },
+  "upload": {
+    "dropActive": "Dosyanızı buraya bırakın",
+    "dropIdle": "Dosyanızı buraya sürükleyip bırakın",
+    "browse": "veya göz atmak için tıklayın (JSON)",
+    "invalidFile": "Lütfen geçerli bir JSON dosyası yükleyin",
+    "fileUploaded": "✓ Dosya yüklendi: {filename}"
+  },
+  "form": {
+    "contextLabel": "Uygulama Bağlamı",
+    "contextHint": "(uygulamanızı açıklayın)",
+    "contextPlaceholder": "örn., Bu 6-10 yaş arası çocuklar için rahat bir bulmaca oyunudur. Uygun yerlerde emojilerle birlikte samimi ve eğlenceli bir dil kullanın.",
+    "quickTemplates": "Hızlı şablonlar:",
+    "languageLabel": "Hedef Dil",
+    "translateButton": "Çevir",
+    "translatingButton": "Çevriliyor...",
+    "fillFields": "Lütfen tüm alanları doldurun",
+    "templates": {
+      "casualGame": "Gündelik Mobil Oyun",
+      "b2b": "B2B Kurumsal Yazılım",
+      "educational": "Eğitim Uygulaması",
+      "health": "Sağlık & Fitness",
+      "ecommerce": "E-Ticaret Platformu"
+    }
+  },
+  "results": {
+    "title": "Çeviri Sonucu",
+    "targetLanguage": "Hedef Dil",
+    "format": "Format",
+    "copy": "Kopyala",
+    "copied": "Kopyalandı!",
+    "download": "İndir",
+    "note": "Çeviriniz hazır! Kopyalayabilir veya JSON olarak indirebilirsiniz. Dosya, çevrilmiş değerlerle birlikte orijinal yapıyı korur."
+  },
+  "status": {
+    "awaitingTitle": "Çeviri bekleniyor...",
+    "awaitingHint": "Formu doldurun ve çevir butonuna tıklayın",
+    "uploadTitle": "📁 Başlamak için bir dosya yükleyin",
+    "uploadHint": "JSON formatını destekler"
+  },
+  "features": {
+    "title": "Neden Transly?",
+    "contextAware": {
+      "title": "Bağlama Duyarlı",
+      "description": "Uygulamanız hakkında bağlam sağlayarak tona uygun çeviriler elde edin"
+    },
+    "free": {
+      "title": "Ücretsiz Kullanım",
+      "description": "API anahtarı yok, ödeme yok. Cloudflare ücretsiz katmanı üzerine inşa edilmiştir."
+    },
+    "fast": {
+      "title": "Hızlı & Güvenilir",
+      "description": "Dünya genelinde Cloudflare edge ağı üzerinde Llama 3 ile desteklenir"
+    }
+  },
+  "footer": {
+    "copyright": "© 2024 Transly. Tüm hakları saklıdır.",
+    "madeWith": "Dünya çapındaki geliştiriciler için ❤️ ile yapıldı",
+    "license": "MIT Lisansı",
+    "selfTranslated": "🌍 Bu web sitesi birden fazla dilde mevcuttur — Transly kullanılarak çevrilmiştir."
+  },
+  "progress": {
+    "preparing": "Partiler hazırlanıyor...",
+    "processing": "{total} partiden {current}. parti çevrildi"
+  },
+  "errors": {
+    "uploadFirst": "Lütfen önce bir dosya yükleyin",
+    "translationFailed": "Çeviri başarısız oldu"
+  },
+  "language": {
+    "select": "Dil seçin"
+  },
+  "recentFiles": {
+    "title": "Son Dosyalar",
+    "saveHistory": "Geçmişi kaydet",
+    "historyOffMessage": "Geçmiş kapalı. Yeni çeviriler kaydedilmeyecek.",
+    "empty": "Henüz son dosya yok. Çevrilen dosyalarınız burada görünecek.",
+    "delete": "Sil",
+    "downloadSource": "Kaynak",
+    "downloadTranslated": "Çevrilen",
+    "expiresIn": "{days} gün içinde süresi dolacak"
+  },
+  "cookies": {
+    "title": "Devam etmeden önce",
+    "description": "Tercihlerinizi hatırlamak ve uygulamayı daha kullanışlı hale getirmek için tarayıcı depolamasını (localStorage) kullanıyoruz. Hiçbir veri cihazınızdan çıkmaz — sizi takip eden sunucularımız, analiz araçlarımız veya üçüncü taraf çerezlerimiz yoktur.",
+    "allowAll": "Hepsine İzin Ver",
+    "onlyRequired": "Sadece Gerekli",
+    "whatDoesThisMean": "Bu ne anlama geliyor?",
+    "required": {
+      "title": "Gerekli (her zaman açık)",
+      "items": {
+        "session": "Temel uygulama işlevselliği ve arayüz durumu",
+        "security": "Güvenlik ve istek bütünlüğü"
+      }
+    },
+    "functional": {
+      "title": "Fonksiyonel (isteğe bağlı)",
+      "description": "\"Hepsine İzin Ver\" seçtiğinizde veya bir özelliği kullandığınızda etkinleştirilir.",
+      "items": {
+        "language": "Tercih ettiğiniz dil",
+        "recentFiles": "Son dosya geçmişi",
+        "apiKey": "API anahtarınız (yalnızca tarayıcınızda saklanır)"
+      }
+    },
+    "noTracking": "Analitik yok. Reklam yok. Üçüncü taraf takip yok. Asla.",
+    "featureConsent": {
+      "recentFiles": "Son dosyalar tarayıcınızda saklanacaktır. Bunu ayarlardan istediğiniz zaman temizleyebilirsiniz.",
+      "apiKey": "API anahtarınız tarayıcınızda saklanacaktır. Sadece yapılandırdığınız sağlayıcıya gönderilir.",
+      "language": "Dil tercihiniz bir sonraki ziyaretiniz için hatırlanacaktır."
+    }
+  },
+  "byoak": {
+    "toggle": "Kendi API anahtarınızı kullanın",
+    "toggleHint": "Daha iyi oran limitleri ve model erişimi",
+    "active": "Aktif",
+    "provider": "Sağlayıcı",
+    "apiKey": "API Anahtarı",
+    "apiKeyPlaceholder": "API anahtarınızı yapıştırın",
+    "showKey": "Anahtarı göster",
+    "hideKey": "Anahtarı gizle",
+    "model": "Model",
+    "modelHint": "Mevcut modelleri yüklemek için yukarıya API anahtarınızı girin",
+    "modelLoading": "Modeller yükleniyor...",
+    "modelError": "Modeller yüklenemedi",
+    "modelErrorFallback": "Model kimliğini manuel olarak girin:",
+    "selectModel": "Bir model seçin",
+    "modelCustom": "Özel model...",
+    "customModelPlaceholder": "örn. gpt-4o",
+    "contextLength": "Bağlam penceresi",
+    "contextLengthUnit": "token",
+    "contextHigherWarning": "Bunu değiştirmek bazı modellerde hatalara yol açabilir —",
+    "contextLowerWarning": "Daha düşük bir bağlam penceresi seçerseniz, çeviri daha uzun sürebilir ve daha az doğru olabilir",
+    "contextReset": "önerileni kullan",
+    "rememberKey": "Anahtarı bu tarayıcıda hatırla",
+    "rememberKeyNote": "localStorage’da saklanır — yalnızca çeviri sağlayıcısını çağırmak için kullanılır",
+    "jsonNotSupported": "Bu model JSON çıktısını desteklemeyebilir — çeviri başarısız olabilir"
+  }
+}

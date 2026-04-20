@@ -1,6 +1,6 @@
-# Contributing to QuickLocalize
+# Contributing to Transly
 
-First off, thank you for considering contributing to QuickLocalize! It's people like you that make QuickLocalize such a great tool.
+First off, thank you for considering contributing to Transly! It's people like you that make Transly such a great tool.
 
 ## Code of Conduct
 
@@ -41,8 +41,8 @@ Enhancement suggestions are tracked as GitHub issues. Please include:
 ## Development Setup
 
 1. Fork the repository
-2. Clone your fork: `git clone https://github.com/your-username/quicklocalize.git`
-3. Add the upstream repository: `git remote add upstream https://github.com/original-owner/quicklocalize.git`
+2. Clone your fork: `git clone https://github.com/your-username/transly.git`
+3. Add the upstream repository: `git remote add upstream https://github.com/original-owner/transly.git`
 4. Create a new branch: `git checkout -b feature/your-feature-name`
 5. Install dependencies: `npm install`
 6. Make your changes

@@ -52,13 +52,13 @@
     "uploadHint": "支持 JSON 格式"
   },
   "features": {
-    "title": "为什么选择 QuickLocalize？",
+    "title": "为什么选择 Transly？",
     "contextAware": {
       "title": "上下文感知",
       "description": "提供应用上下文以获取语气适当的翻译"
     },
     "free": {
-      "title": "永久免费",
+      "title": "免费",
       "description": "无需 API 密钥，无需付款。基于 Cloudflare 免费层构建。"
     },
     "fast": {
@@ -67,10 +67,10 @@
     }
   },
   "footer": {
-    "copyright": "© 2024 QuickLocalize。保留所有权利。",
+    "copyright": "© 2024 Transly。保留所有权利。",
     "madeWith": "为全球开发者制作，带有 ❤️",
     "license": "MIT 许可证",
-    "selfTranslated": "🌍 本网站有多种语言版本 —— 使用 QuickLocalize 自身翻译。"
+    "selfTranslated": "🌍 本网站有多种语言版本 —— 使用 Transly 自身翻译。"
   },
   "progress": {
     "preparing": "正在准备批次...",

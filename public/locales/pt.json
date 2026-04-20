@@ -52,13 +52,13 @@
     "uploadHint": "Suporta formato JSON"
   },
   "features": {
-    "title": "Por que QuickLocalize?",
+    "title": "Por que Transly?",
     "contextAware": {
       "title": "Consciente do Contexto",
       "description": "Forneça contexto sobre o seu aplicativo para obter traduções apropriadas ao tom"
     },
     "free": {
-      "title": "Gratuito para Sempre",
+      "title": "Gratuito",
       "description": "Nenhuma chave de API, nenhum pagamento é necessário. Construído na camada gratuita do Cloudflare."
     },
     "fast": {
@@ -67,10 +67,10 @@
     }
   },
   "footer": {
-    "copyright": "© 2024 QuickLocalize. Todos os direitos reservados.",
+    "copyright": "© 2024 Transly. Todos os direitos reservados.",
     "madeWith": "Feito com ❤️ para desenvolvedores em todo o mundo",
     "license": "Licença MIT",
-    "selfTranslated": "🌍 Este site está disponível em vários idiomas — traduzido usando o próprio QuickLocalize."
+    "selfTranslated": "🌍 Este site está disponível em vários idiomas — traduzido usando o próprio Transly."
   },
   "progress": {
     "preparing": "Preparando lotes...",

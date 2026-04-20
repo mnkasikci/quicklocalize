@@ -1,5 +1,5 @@
 {
-  "name": "quicklocalize",
+  "name": "transly",
   "version": "0.1.0",
   "description": "Free, open-source localization tool powered by LLMs and Cloudflare Workers AI",
   "private": true,

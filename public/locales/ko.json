@@ -52,13 +52,13 @@
     "uploadHint": "JSON 형식 지원"
   },
   "features": {
-    "title": "QuickLocalize를 사용하는 이유?",
+    "title": "Transly를 사용하는 이유?",
     "contextAware": {
       "title": "컨텍스트 인식",
       "description": "앱에 대한 정보를 제공하여 톤에 맞는 번역을 얻으세요"
     },
     "free": {
-      "title": "무료로 영원히",
+      "title": "무료",
       "description": "API 키나 결제가 필요 없습니다. Cloudflare 무료 티어에서 구축되었습니다."
     },
     "fast": {
@@ -67,10 +67,10 @@
     }
   },
   "footer": {
-    "copyright": "ⓒ 2024 QuickLocalize. 모든 권利 보유.",
+    "copyright": "ⓒ 2024 Transly. 모든 권利 보유.",
     "madeWith": "개발자들을 위해 ❤️ 로 만든",
     "license": "MIT 라이선스",
-    "selfTranslated": "🌍 이 웹사이트는 여러 언어로 제공됩니다 — QuickLocalize 자체로 번역되었습니다."
+    "selfTranslated": "🌍 이 웹사이트는 여러 언어로 제공됩니다 — Transly 자체로 번역되었습니다."
   },
   "progress": {
     "preparing": "배치 준비 중...",
