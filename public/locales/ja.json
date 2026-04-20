@@ -55,7 +55,12 @@
     "title": "Transly を使用する理由",
     "contextAware": {
       "title": "コンテキスト対応",
-      "description": "アプリのコンテキストを提供して、トーンに適した翻訳を取得します"
+      "description": "アプリのコンテキストを提供して、トーンに適した翻訳を取得します",
+      "supportStar": {
+        "prefix": "このプロジェクトをサポートしたいですか？",
+        "linkText": "GitHub で Star してください",
+        "suffix": "."
+      }
     },
     "free": {
       "title": "無料",

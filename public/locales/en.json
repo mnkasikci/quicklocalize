@@ -6,7 +6,12 @@
   "hero": {
     "title": "Localize Your App, Instantly",
     "description": "Upload your localization files, add context about your app, and get intelligent, tone-aware translations powered by LLMs.",
-    "githubButton": "GitHub Repository"
+    "githubButton": "GitHub Repository",
+    "supportStar": {
+      "prefix": "Want to support this project?",
+      "linkText": "Star it on GitHub",
+      "suffix": "?"
+    }
   },
   "steps": {
     "upload": "Step 1: Upload File",

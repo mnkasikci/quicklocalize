@@ -55,7 +55,12 @@
     "title": "为什么选择 Transly？",
     "contextAware": {
       "title": "上下文感知",
-      "description": "提供应用上下文以获取语气适当的翻译"
+      "description": "提供应用上下文以获取语气适当的翻译",
+      "supportStar": {
+        "prefix": "想支持这个项目吗？",
+        "linkText": "在 GitHub 上 Star",
+        "suffix": "？"
+      }
     },
     "free": {
       "title": "免费",

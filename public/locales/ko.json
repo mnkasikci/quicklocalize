@@ -55,7 +55,12 @@
     "title": "Transly를 사용하는 이유?",
     "contextAware": {
       "title": "컨텍스트 인식",
-      "description": "앱에 대한 정보를 제공하여 톤에 맞는 번역을 얻으세요"
+      "description": "앱에 대한 정보를 제공하여 톤에 맞는 번역을 얻으세요",
+      "supportStar": {
+        "prefix": "이 프로젝트를 지원하고 싶습니까?",
+        "linkText": "GitHub에서 Star 해주세요",
+        "suffix": "."
+      }
     },
     "free": {
       "title": "무료",

@@ -29,10 +29,16 @@
 
 ## 🛠️ Local Setup
 
+## ⭐ Support the project
+
+If Transly helps you, please **star the repo on GitHub** to support the project:
+
+- `https://github.com/mnkasikci/transly`
+
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/transly.git
+git clone https://github.com/mnkasikci/transly.git
 cd transly
 ```
 

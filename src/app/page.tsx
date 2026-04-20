@@ -186,6 +186,18 @@ export default function Home() {
             {t('hero.githubButton')}
           </a>
         </div>
+        <p className="text-sm text-slate-400">
+          {t('hero.supportStar.prefix')}{' '}
+          <a
+            href="https://github.com/mnkasikci/transly"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-4 hover:text-slate-200"
+          >
+            {t('hero.supportStar.linkText')}
+          </a>
+          {t('hero.supportStar.suffix')}
+        </p>
       </section>
 
       <section className="grid md:grid-cols-2 gap-8 items-start">

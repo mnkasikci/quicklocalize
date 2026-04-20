@@ -55,7 +55,12 @@
     "title": "Warum Transly?",
     "contextAware": {
       "title": "Kontextbewusst",
-      "description": "Geben Sie Kontext über Ihre App an, um tonangemessene Übersetzungen zu erhalten"
+      "description": "Geben Sie Kontext über Ihre App an, um tonangemessene Übersetzungen zu erhalten",
+      "supportStar": {
+        "prefix": "Möchten Sie dieses Projekt unterstützen?",
+        "linkText": "Star es auf GitHub",
+        "suffix": "."
+      }
     },
     "free": {
       "title": "Kostenlos",

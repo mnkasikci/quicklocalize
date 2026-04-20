@@ -55,7 +55,13 @@
     "title": "Pourquoi Transly ?",
     "contextAware": {
       "title": "Conscient du contexte",
-      "description": "Fournissez des informations sur votre application pour obtenir des traductions appropriées au ton"
+      "description": "Fournissez des informations sur votre application pour obtenir des traductions appropriées au ton",
+      "supportStar": {
+        "prefix": "Voulez-vous soutenir ce projet ?",
+        "linkText": "Donnez une étoile sur GitHub",
+   
+        "suffix": "."
+      }
     },
     "free": {
       "title": "Gratuit",
