@@ -24,8 +24,8 @@ export function FileUploader({ onFileUpload }: FileUploaderProps) {
   };
 
   const validateFile = (file: File): boolean => {
-    const validTypes = ['application/json', 'text/plain', 'text/yaml', 'application/x-yaml'];
-    const validExtensions = ['.json', '.yaml', '.yml'];
+    const validTypes = ['application/json', 'text/plain'];
+    const validExtensions = ['.json'];
     return validTypes.includes(file.type) || validExtensions.some((ext) => file.name.endsWith(ext));
   };
 
@@ -71,7 +71,7 @@ export function FileUploader({ onFileUpload }: FileUploaderProps) {
       <input
         ref={fileInputRef}
         type="file"
-        accept=".json,.yaml,.yml"
+        accept=".json"
         onChange={handleChange}
         className="hidden"
       />

@@ -44,7 +44,7 @@ export default function Home() {
           file: fileContent,
           context: formData.context,
           targetLanguage: formData.targetLanguage,
-          fileFormat: uploadedFile.name.endsWith('.json') ? 'json' : 'yaml',
+          fileFormat: 'json',
         }),
       });
 

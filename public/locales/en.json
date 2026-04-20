@@ -15,8 +15,8 @@
   "upload": {
     "dropActive": "Drop your file here",
     "dropIdle": "Drag & drop your file here",
-    "browse": "or click to browse (JSON / YAML)",
-    "invalidFile": "Please upload a valid JSON or YAML file",
+    "browse": "or click to browse (JSON)",
+    "invalidFile": "Please upload a valid JSON file",
     "fileUploaded": "✓ File uploaded: {filename}"
   },
   "form": {
@@ -49,7 +49,7 @@
     "awaitingTitle": "Awaiting translation...",
     "awaitingHint": "Fill in the form and click translate",
     "uploadTitle": "📁 Upload a file to get started",
-    "uploadHint": "Supports JSON and YAML formats"
+    "uploadHint": "Supports JSON format"
   },
   "features": {
     "title": "Why QuickLocalize?",

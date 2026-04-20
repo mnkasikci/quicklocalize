@@ -5,8 +5,8 @@ import { ClientLayout } from '@/components/ClientLayout';
 export const metadata: Metadata = {
   title: 'QuickLocalize - Free LLM-Powered Localization',
   description:
-    'Upload your JSON/YAML files and get context-aware translations powered by Cloudflare Workers AI',
-  keywords: ['localization', 'translation', 'i18n', 'JSON', 'YAML', 'LLM', 'free'],
+    'Upload your JSON files and get context-aware translations powered by Cloudflare Workers AI',
+  keywords: ['localization', 'translation', 'i18n', 'JSON', 'LLM', 'free'],
   authors: [{ name: 'QuickLocalize Community' }],
   openGraph: {
     type: 'website',

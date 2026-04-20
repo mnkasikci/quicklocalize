@@ -1,10 +1,10 @@
 # QuickLocalize
 
-> Free, open-source localization tool powered by LLMs. Upload your JSON/YAML files, provide context about your app, and get accurate context-aware translations.
+> Free, open-source localization tool powered by LLMs. Upload your JSON files, provide context about your app, and get accurate context-aware translations.
 
 ## ✨ Features
 
-- **Upload Localization Files** - Support for JSON and YAML formats
+- **Upload Localization Files** - Support for JSON format
 - **Context-Aware Translation** - Provide context (game, B2B software, casual app) to ensure tone-appropriate translations
 - **LLM-Powered** - Uses Cloudflare Workers AI for fast, intelligent translations
 - **Multiple Languages** - Support for 100+ languages via Llama 3
@@ -79,7 +79,7 @@ quicklocalize/
 
 ### User Flow
 
-1. User uploads a JSON/YAML localization file
+1. User uploads a JSON localization file
 2. User provides app context (e.g., "Casual mobile game", "Enterprise B2B solution")
 3. User selects target language(s)
 4. System processes the file with context in the prompt
@@ -215,7 +215,10 @@ Found a bug? Please open an issue on GitHub with:
 ## 🗺️ Roadmap
 
 - [x] Basic file upload functionality
-- [x] JSON/YAML support
+- [x] JSON support
+- [x] Progress tracking
+- [ ] Bring Your Own API Key (use your own credentials for LLM access to improve results and unlock higher rate limits)
+- [ ] YAML support
 - [ ] Bulk file processing
 - [ ] Translation memory & consistency checking
 - [ ] Glossary support (maintain terminology)

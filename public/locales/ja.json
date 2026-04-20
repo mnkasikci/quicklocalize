@@ -15,8 +15,8 @@
   "upload": {
     "dropActive": "ファイルをここにドロップ",
     "dropIdle": "ファイルをここにドラッグ＆ドロップ",
-    "browse": "またはクリックして参照 (JSON / YAML)",
-    "invalidFile": "有効な JSON または YAML ファイルをアップロードしてください",
+    "browse": "またはクリックして参照 (JSON)",
+    "invalidFile": "有効な JSON ファイルをアップロードしてください",
     "fileUploaded": "✓ ファイルがアップロードされました: {filename}"
   },
   "form": {
@@ -49,7 +49,7 @@
     "awaitingTitle": "翻訳待ち...",
     "awaitingHint": "フォームを入力し、翻訳をクリック",
     "uploadTitle": "📁 ファイルをアップロードして開始",
-    "uploadHint": "JSON と YAML 形式をサポート"
+    "uploadHint": "JSON 形式をサポート"
   },
   "features": {
     "title": "QuickLocalize を使用する理由",

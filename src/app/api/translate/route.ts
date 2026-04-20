@@ -9,7 +9,7 @@ interface TranslateRequest {
   file: Record<string, any>;
   context: string;
   targetLanguage: string;
-  fileFormat: 'json' | 'yaml';
+  fileFormat: 'json';
 }
 
 export function POST(request: NextRequest) {
