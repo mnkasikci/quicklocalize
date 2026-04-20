@@ -93,6 +93,35 @@
     "downloadTranslated": "翻译文件",
     "expiresIn": "过期时间: {days}d"
   },
+  "cookies": {
+    "title": "继续之前",
+    "description": "我们使用浏览器存储 (localStorage) 来记住您的偏好并使应用程序更有用。我们没有跟踪您的服务器，没有分析，也没有第三方 cookies。",
+    "allowAll": "允许所有",
+    "onlyRequired": "仅必需",
+    "whatDoesThisMean": "这意味着什么？",
+    "required": {
+      "title": "必需 (始终启用)",
+      "items": {
+        "session": "应用程序的基本功能和 UI 状态",
+        "security": "安全性和请求完整性"
+      }
+    },
+    "functional": {
+      "title": "功能性 (可选)",
+      "description": "启用时，当您选择 \"允许所有\" 或单独使用功能时。",
+      "items": {
+        "language": "您的首选语言",
+        "recentFiles": "最近翻译的文件历史",
+        "apiKey": "您的 API 密钥 (仅存储在您的浏览器中)"
+      }
+    },
+    "noTracking": "没有分析。没有广告。没有第三方跟踪。永远不会。",
+    "featureConsent": {
+      "recentFiles": "最近翻译的文件将存储在您的浏览器中。您可以在设置中随时删除它们。",
+      "apiKey": "您的 API 密钥将存储在您的浏览器中。它永远不会发送到任何地方，除了您配置的提供商。",
+      "language": "您的语言偏好将在下次访问时记住。"
+    }
+  },
   "byoak": {
     "toggle": "使用你自己的 API 密钥",
     "toggleHint": "更好的速率限制与模型访问",

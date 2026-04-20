@@ -93,6 +93,35 @@
     "downloadTranslated": "Traduit",
     "expiresIn": "Expire dans {days}d"
   },
+  "cookies": {
+    "title": "Avant de continuer",
+    "description": "Nous utilisons le stockage du navigateur (localStorage) pour mémoriser vos préférences et rendre l'application plus utile. Aucune donnée ne quitte votre appareil — nous n'avons pas de serveurs qui vous suivent, pas d'analyses, et pas de cookies tiers.",
+    "allowAll": "Tout autoriser",
+    "onlyRequired": "Seulement requis",
+    "whatDoesThisMean": "Que signifie cela ?",
+    "required": {
+      "title": "Requis (toujours activé)",
+      "items": {
+        "session": "Fonctionnalités de base de l'application et état de l'interface utilisateur",
+        "security": "Sécurité et intégrité des requêtes"
+      }
+    },
+    "functional": {
+      "title": "Fonctionnel (opt-in)",
+      "description": "Activé lorsque vous choisissez \"Tout autoriser\", ou individuellement lorsque vous utilisez une fonctionnalité.",
+      "items": {
+        "language": "Votre langue préférée",
+        "recentFiles": "Historique des fichiers traduits",
+        "apiKey": "Votre clé API (stockée uniquement dans votre navigateur)"
+      }
+    },
+    "noTracking": "Aucune analyse. Aucune publicité. Aucun suivi tiers. Jamais.",
+    "featureConsent": {
+      "recentFiles": "Les fichiers traduits récents seront stockés dans votre navigateur. Vous pouvez les supprimer à tout moment dans les paramètres.",
+      "apiKey": "Votre clé API sera stockée dans votre navigateur. Elle ne sera jamais envoyée à un autre endroit que le fournisseur que vous configurez.",
+      "language": "Votre préférence de langue sera mémorisée pour votre prochaine visite."
+    }
+  },
   "byoak": {
     "toggle": "Utiliser votre propre clé API",
     "toggleHint": "Meilleures limites de débit et accès aux modèles",

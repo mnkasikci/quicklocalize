@@ -93,6 +93,35 @@
     "downloadTranslated": "Traducido",
     "expiresIn": "Expira en {days}d"
   },
+  "cookies": {
+    "title": "Antes de continuar",
+    "description": "Usamos el almacenamiento del navegador (localStorage) para recordar tus preferencias y hacer la aplicación más útil. No hay datos que salgan de tu dispositivo — no tenemos servidores que te rastrean, no tenemos análisis, y no tenemos cookies de terceros.",
+    "allowAll": "Permitir todo",
+    "onlyRequired": "Solo requerido",
+    "whatDoesThisMean": "¿Qué significa esto?",
+    "required": {
+      "title": "Requerido (siempre activo)",
+      "items": {
+        "session": "Funcionalidad básica de la aplicación y estado de la interfaz",
+        "security": "Seguridad y integridad de las solicitudes"
+      }
+    },
+    "functional": {
+      "title": "Funcional (opcional)",
+      "description": "Activado cuando eliges \"Permitir todo\" o individualmente cuando usas una funcionalidad.",
+      "items": {
+        "language": "Tu idioma preferido",
+        "recentFiles": "Historial de archivos traducidos",
+        "apiKey": "Tu clave API (guardada solo en tu navegador)"
+      }
+    },
+    "noTracking": "No hay análisis. No hay publicidad. No hay rastreo de terceros. Nunca.",
+    "featureConsent": {
+      "recentFiles": "Los archivos traducidos recientes se guardarán en tu navegador. Puedes borrarlos en cualquier momento en las configuraciones.",
+      "apiKey": "Tu clave API se guardará en tu navegador. Nunca se enviará a ningún otro lado excepto al proveedor que configures.",
+      "language": "Tu preferencia de idioma se recordará para tu próxima visita."
+    }
+  },
   "byoak": {
     "toggle": "Usa tu propia clave API",
     "toggleHint": "Mejores límites de tasa y acceso a modelos",

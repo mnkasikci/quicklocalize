@@ -9,6 +9,7 @@ import {
   loadTranslations,
   persistLanguage,
 } from '@/lib/i18n';
+import { useCookieConsent } from '@/context/CookieConsentContext';
 
 type Translations = Record<string, unknown>;
 
@@ -35,6 +36,7 @@ function interpolate(str: string, vars: Record<string, string>): string {
 export function LocaleProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguageState] = useState<LanguageCode>('en');
   const [translations, setTranslations] = useState<Translations>(enFallback);
+  const { isAllowed, grantFeatureConsent } = useCookieConsent();
 
   useEffect(() => {
     const detected = detectLanguage();
@@ -45,6 +47,9 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   function setLanguage(code: LanguageCode) {
+    if (!isAllowed('language')) {
+      grantFeatureConsent('language');
+    }
     persistLanguage(code);
     window.location.reload();
   }

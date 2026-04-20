@@ -1,6 +1,9 @@
 'use client';
 
 import { LocaleProvider, useLocale } from '@/context/LocaleContext';
+import { CookieConsentProvider } from '@/context/CookieConsentContext';
+import { CookieBanner } from './CookieBanner';
+import { FeatureConsentToast } from './FeatureConsentToast';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
 function LayoutShell({ children }: { children: React.ReactNode }) {
@@ -68,8 +71,12 @@ function LayoutShell({ children }: { children: React.ReactNode }) {
 
 export function ClientLayout({ children }: { children: React.ReactNode }) {
   return (
-    <LocaleProvider>
-      <LayoutShell>{children}</LayoutShell>
-    </LocaleProvider>
+    <CookieConsentProvider>
+      <LocaleProvider>
+        <CookieBanner />
+        <FeatureConsentToast />
+        <LayoutShell>{children}</LayoutShell>
+      </LocaleProvider>
+    </CookieConsentProvider>
   );
 }

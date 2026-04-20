@@ -5,8 +5,14 @@ import { FileUploader } from '@/components/FileUploader';
 import { TranslationForm } from '@/components/TranslationForm';
 import { ResultsDisplay } from '@/components/ResultsDisplay';
 import { ApiKeyConfig, DEFAULT_BYOAK, type BYOAKConfig } from '@/components/ApiKeyConfig';
-import { RecentFilesPanel, type RecentFile, getPreviewLines, ONE_WEEK_MS } from '@/components/RecentFilesPanel';
+import {
+  RecentFilesPanel,
+  type RecentFile,
+  getPreviewLines,
+  ONE_WEEK_MS,
+} from '@/components/RecentFilesPanel';
 import { useLocale } from '@/context/LocaleContext';
+import { useCookieConsent } from '@/context/CookieConsentContext';
 
 const LS_RECENT = 'ql_recent_files';
 const LS_HISTORY = 'ql_history_enabled';
@@ -21,10 +27,12 @@ export default function Home() {
   const [progress, setProgress] = useState<{ completed: number; total: number } | null>(null);
   const [byoakConfig, setByoakConfig] = useState<BYOAKConfig>(DEFAULT_BYOAK);
   const [recentFiles, setRecentFiles] = useState<RecentFile[]>([]);
-  const [historyEnabled, setHistoryEnabled] = useState(true);
+  const [historyEnabled, setHistoryEnabled] = useState(false);
   const { t } = useLocale();
+  const { isAllowed, grantFeatureConsent } = useCookieConsent();
 
   useEffect(() => {
+    if (!isAllowed('recentFiles')) return;
     try {
       const stored = localStorage.getItem(LS_RECENT);
       if (stored) {
@@ -37,17 +45,23 @@ export default function Home() {
       }
       setHistoryEnabled(localStorage.getItem(LS_HISTORY) !== 'false');
     } catch {}
-  }, []);
+  }, [isAllowed]);
 
   const handleToggleHistory = (enabled: boolean) => {
     setHistoryEnabled(enabled);
+    if (!isAllowed('recentFiles')) {
+      if (enabled) grantFeatureConsent('recentFiles');
+      return;
+    }
     localStorage.setItem(LS_HISTORY, String(enabled));
   };
 
   const handleDeleteRecentFile = (id: string) => {
     setRecentFiles((prev) => {
       const updated = prev.filter((f) => f.id !== id);
-      localStorage.setItem(LS_RECENT, JSON.stringify(updated));
+      if (isAllowed('recentFiles')) {
+        localStorage.setItem(LS_RECENT, JSON.stringify(updated));
+      }
       return updated;
     });
   };
@@ -124,7 +138,7 @@ export default function Home() {
               targetLanguage: event.targetLanguage,
               format: event.format,
             });
-            if (historyEnabled) {
+            if (historyEnabled && isAllowed('recentFiles')) {
               const now = Date.now();
               const newEntry: RecentFile = {
                 id: crypto.randomUUID(),

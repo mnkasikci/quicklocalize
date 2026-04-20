@@ -93,6 +93,35 @@
     "downloadTranslated": "Translated",
     "expiresIn": "Expires in {days}d"
   },
+  "cookies": {
+    "title": "Before you continue",
+    "description": "We use browser storage (localStorage) to remember your preferences and make the app more useful. No data leaves your device — we have no servers tracking you, no analytics, and no third-party cookies.",
+    "allowAll": "Allow All",
+    "onlyRequired": "Only Required",
+    "whatDoesThisMean": "What does this mean?",
+    "required": {
+      "title": "Required (always on)",
+      "items": {
+        "session": "Basic app functionality and UI state",
+        "security": "Security and request integrity"
+      }
+    },
+    "functional": {
+      "title": "Functional (opt-in)",
+      "description": "Enabled when you choose \"Allow All\", or individually when you use a feature.",
+      "items": {
+        "language": "Your preferred language",
+        "recentFiles": "Recent files history",
+        "apiKey": "Your API key (stored only in your browser)"
+      }
+    },
+    "noTracking": "No analytics. No ads. No third-party tracking. Ever.",
+    "featureConsent": {
+      "recentFiles": "Recent files will be stored in your browser. You can clear this anytime in settings.",
+      "apiKey": "Your API key will be saved in your browser. It is never sent anywhere except the provider you configure.",
+      "language": "Your language preference will be remembered for your next visit."
+    }
+  },
   "byoak": {
     "toggle": "Use your own API key",
     "toggleHint": "Better rate limits & model access",

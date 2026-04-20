@@ -93,6 +93,35 @@
     "downloadTranslated": "번역됨",
     "expiresIn": "만료: {days}d"
   },
+  "cookies": {
+    "title": "계속하기 전에",
+    "description": "브라우저 스토리지 (localStorage)를 사용하여 설정을 기억하고 앱을 더 유용하게 만듭니다. 서버가 추적하거나 분석을 수행하거나 써드파티 쿠키를 사용하지 않습니다.",
+    "allowAll": "모두 허용",
+    "onlyRequired": "필수 항목만",
+    "whatDoesThisMean": "이것은 무엇을 의미합니까?",
+    "required": {
+      "title": "필수 (항상 활성)",
+      "items": {
+        "session": "앱의 기본 기능과 UI 상태",
+        "security": "보안 및 요청 정확성"
+      }
+    },
+    "functional": {
+      "title": "기능적 (선택 사항)",
+      "description": "모두 허용을 선택하거나 기능을 사용할 때 활성화됩니다.",
+      "items": {
+        "language": "원하는 언어",
+        "recentFiles": "최근 번역 파일 히스토리",
+        "apiKey": "자체 API 키 (브라우저에만 저장됨)"
+      }
+    },
+    "noTracking": "분석이 없습니다. 광고가 없습니다. 써드파티 추적이 없습니다. 절대로 없습니다.",
+    "featureConsent": {
+      "recentFiles": "최근 번역 파일은 브라우저에 저장됩니다. 설정에서 언제든지 삭제할 수 있습니다.",
+      "apiKey": "자체 API 키는 브라우저에 저장됩니다. 설정한 제공업체에만 전송됩니다.",
+      "language": "원하는 언어는 다음 방문 시 기억됩니다."
+    }
+  },
   "byoak": {
     "toggle": "자체 API 키 사용",
     "toggleHint": "더 나은 속도 제한 및 모델 접근",

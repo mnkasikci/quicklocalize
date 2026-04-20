@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { ChevronDown, ChevronUp, Eye, EyeOff, Key, AlertTriangle, Loader2 } from 'lucide-react';
 import { useLocale } from '@/context/LocaleContext';
+import { useCookieConsent } from '@/context/CookieConsentContext';
 
 export interface BYOAKConfig {
   enabled: boolean;
@@ -49,6 +50,7 @@ export const DEFAULT_BYOAK: BYOAKConfig = {
 
 export function ApiKeyConfig({ value, onChange, disabled = false }: ApiKeyConfigProps) {
   const { t } = useLocale();
+  const { isAllowed, grantFeatureConsent } = useCookieConsent();
   const [expanded, setExpanded] = useState(false);
   const [showKey, setShowKey] = useState(false);
   const [rememberKey, setRememberKey] = useState(false);
@@ -64,6 +66,7 @@ export function ApiKeyConfig({ value, onChange, disabled = false }: ApiKeyConfig
 
   // Restore from localStorage on mount
   useEffect(() => {
+    if (!isAllowed('apiKey')) return;
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) {
       try {
@@ -74,7 +77,7 @@ export function ApiKeyConfig({ value, onChange, disabled = false }: ApiKeyConfig
         if (parsed.apiKey) scheduleModelFetch(parsed.provider, parsed.apiKey, parsed, false);
       } catch {}
     }
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [isAllowed]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const save = (config: BYOAKConfig) => localStorage.setItem(STORAGE_KEY, JSON.stringify(config));
 
@@ -196,8 +199,12 @@ export function ApiKeyConfig({ value, onChange, disabled = false }: ApiKeyConfig
 
   const handleRememberChange = (remember: boolean) => {
     setRememberKey(remember);
-    if (remember) save(value);
-    else localStorage.removeItem(STORAGE_KEY);
+    if (remember) {
+      if (!isAllowed('apiKey')) grantFeatureConsent('apiKey');
+      save(value);
+    } else {
+      localStorage.removeItem(STORAGE_KEY);
+    }
   };
 
   const selectedModel = models.find((m) => m.id === value.modelId);

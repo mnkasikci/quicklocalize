@@ -93,6 +93,35 @@
     "downloadTranslated": "Traduzido",
     "expiresIn": "Expira em {days}d"
   },
+  "cookies": {
+    "title": "Antes de continuar",
+    "description": "Usamos o armazenamento do navegador (localStorage) para lembrar suas preferências e tornar o aplicativo mais útil. Não há dados que saiam do seu dispositivo — não temos servidores que te seguem, não temos análises, e não temos cookies de terceiros.",
+    "allowAll": "Permitir tudo",
+    "onlyRequired": "Apenas necessário",
+    "whatDoesThisMean": "O que isso significa?",
+    "required": {
+      "title": "Necessário (sempre ativo)",
+      "items": {
+        "session": "Funcionalidade básica do aplicativo e estado da interface",
+        "security": "Segurança e integridade das requisições"
+      }
+    },
+    "functional": {
+      "title": "Funcional (opcional)",
+      "description": "Ativado quando você escolhe \"Permitir tudo\" ou individualmente quando usa uma funcionalidade.",
+      "items": {
+        "language": "Seu idioma preferido",
+        "recentFiles": "Histórico de arquivos traduzidos",
+        "apiKey": "Sua chave de API (armazenada apenas no seu navegador)"
+      }
+    },
+    "noTracking": "Nenhuma análise. Nenhuma publicidade. Nenhum rastreamento de terceiros. Nunca.",
+    "featureConsent": {
+      "recentFiles": "Os arquivos traduzidos recentes serão armazenados no seu navegador. Você pode excluí-los em qualquer momento nas configurações.",
+      "apiKey": "Sua chave de API será armazenada no seu navegador. Não será enviada a nenhum outro lugar além do provedor que você configurar.",
+      "language": "Sua preferência de idioma será lembrada para sua próxima visita."
+    }
+  },
   "byoak": {
     "toggle": "Usar sua própria chave de API",
     "toggleHint": "Melhores limites de taxa e acesso a modelos",

@@ -93,6 +93,35 @@
     "downloadTranslated": "Übersetzt",
     "expiresIn": "Läuft in {days}d"
   },
+  "cookies": {
+    "title": "Bevor Sie fortfahren",
+    "description": "Wir verwenden Browser-Speicher (localStorage), um Ihre Einstellungen zu speichern und die App nützlicher zu machen. Keine Daten verlassen Ihr Gerät — wir haben keine Server, die Sie verfolgen, keine Analysen und keine Drittanbieter-Cookies.",
+    "allowAll": "Alle erlauben",
+    "onlyRequired": "Nur benötigte",
+    "whatDoesThisMean": "Was bedeutet das?",
+    "required": {
+      "title": "Benötigte (immer an)",
+      "items": {
+        "session": "Grundlegende App-Funktionalität und UI-Zustand",
+        "security": "Sicherheit und Anfragenintegrität"
+      }
+    },
+    "functional": {
+      "title": "Funktionale (opt-in)",
+      "description": "Aktiviert, wenn Sie \"Alle erlauben\" auswählen oder individuell, wenn Sie eine Funktion verwenden.",
+      "items": {
+        "language": "Ihre bevorzugte Sprache",
+        "recentFiles": "Verlauf der zuletzt übersetzten Dateien",
+        "apiKey": "Ihr API-Schlüssel (nur im Browser gespeichert)"
+      }
+    },
+    "noTracking": "Keine Analysen. Keine Werbung. Keine Drittanbieter-Tracking. Nie.",
+    "featureConsent": {
+      "recentFiles": "Zuletzt übersetzte Dateien werden im Browser gespeichert. Sie können dies jederzeit in den Einstellungen löschen.",
+      "apiKey": "Ihr API-Schlüssel wird im Browser gespeichert. Er wird nirgends außer beim Aufrufen des Übersetzungsanbieters gesendet.",
+      "language": "Ihre Spracheinstellung wird für Ihren nächsten Besuch gespeichert."
+    }
+  },
   "byoak": {
     "toggle": "Eigenen API-Schlüssel verwenden",
     "toggleHint": "Bessere Ratenlimits & Modellzugriff",

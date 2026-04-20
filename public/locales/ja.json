@@ -93,6 +93,35 @@
     "downloadTranslated": "翻訳済み",
     "expiresIn": "有効期限: {days}d"
   },
+  "cookies": {
+    "title": "続ける前に",
+    "description": "ブラウザのストレージ (localStorage) を使用して、あなたの設定を覚えてアプリをより便利にします。サーバーがあなたを追跡したり、分析を行ったり、第三者のクッキーを使用したりすることはありません。",
+    "allowAll": "すべて許可",
+    "onlyRequired": "必須のみ",
+    "whatDoesThisMean": "これは何を意味しますか？",
+    "required": {
+      "title": "必須 (常に有効)",
+      "items": {
+        "session": "アプリの基本的な機能とUIの状態",
+        "security": "セキュリティとリクエストの整合性"
+      }
+    },
+    "functional": {
+      "title": "機能的 (オプトイン)",
+      "description": "「すべて許可」を選択したとき、または機能を使用したときに有効になります。",
+      "items": {
+        "language": "あなたの好みの言語",
+        "recentFiles": "最近の翻訳ファイルの履歴",
+        "apiKey": "あなたのAPIキー (ブラウザにのみ保存されます)"
+      }
+    },
+    "noTracking": "分析はありません。広告はありません。第三者のトラッキングはありません。決してありません。",
+    "featureConsent": {
+      "recentFiles": "最近の翻訳ファイルはブラウザに保存されます。設定でいつでも削除できます。",
+      "apiKey": "あなたのAPIキーはブラウザに保存されます。設定したプロバイダーにのみ送信されます。",
+      "language": "あなたの言語の好みは次回の訪問時に記憶されます。"
+    }
+  },
   "byoak": {
     "toggle": "自分のAPIキーを使用",
     "toggleHint": "レート制限の改善＆モデルへのアクセス",
