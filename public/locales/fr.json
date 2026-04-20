@@ -82,5 +82,30 @@
   },
   "language": {
     "select": "Sélectionner la langue"
+  },
+  "byoak": {
+    "toggle": "Utiliser votre propre clé API",
+    "toggleHint": "Meilleures limites de débit et accès aux modèles",
+    "active": "Actif",
+    "provider": "Fournisseur",
+    "apiKey": "Clé API",
+    "apiKeyPlaceholder": "Collez votre clé API",
+    "showKey": "Afficher la clé",
+    "hideKey": "Masquer la clé",
+    "model": "Modèle",
+    "modelHint": "Saisissez votre clé API ci-dessus pour charger les modèles disponibles",
+    "modelLoading": "Chargement des modèles...",
+    "modelError": "Impossible de charger les modèles",
+    "modelErrorFallback": "Entrez l’identifiant du modèle manuellement :",
+    "selectModel": "Sélectionner un modèle",
+    "modelCustom": "Modèle personnalisé...",
+    "customModelPlaceholder": "ex. gpt-4o",
+    "contextLength": "Fenêtre de contexte",
+    "contextLengthUnit": "jetons",
+    "contextWarning": "Modifier ceci peut provoquer des échecs avec certains modèles —",
+    "contextReset": "utiliser la valeur recommandée",
+    "rememberKey": "Mémoriser la clé dans ce navigateur",
+    "rememberKeyNote": "Stockée dans localStorage — utilisée uniquement pour appeler le fournisseur de traduction",
+    "jsonNotSupported": "Ce modèle peut ne pas prendre en charge la sortie JSON — la traduction peut échouer"
   }
 }

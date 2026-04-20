@@ -82,5 +82,30 @@
   },
   "language": {
     "select": "Sprache auswählen"
+  },
+  "byoak": {
+    "toggle": "Eigenen API-Schlüssel verwenden",
+    "toggleHint": "Bessere Ratenlimits & Modellzugriff",
+    "active": "Aktiv",
+    "provider": "Anbieter",
+    "apiKey": "API-Schlüssel",
+    "apiKeyPlaceholder": "API-Schlüssel einfügen",
+    "showKey": "Schlüssel anzeigen",
+    "hideKey": "Schlüssel verbergen",
+    "model": "Modell",
+    "modelHint": "Geben Sie oben Ihren API-Schlüssel ein, um verfügbare Modelle zu laden",
+    "modelLoading": "Modelle werden geladen...",
+    "modelError": "Modelle konnten nicht geladen werden",
+    "modelErrorFallback": "Modell-ID manuell eingeben:",
+    "selectModel": "Modell auswählen",
+    "modelCustom": "Benutzerdefiniertes Modell...",
+    "customModelPlaceholder": "z. B. gpt-4o",
+    "contextLength": "Kontextfenster",
+    "contextLengthUnit": "Token",
+    "contextWarning": "Eine Änderung kann bei manchen Modellen zu Fehlern führen —",
+    "contextReset": "empfohlene Werte verwenden",
+    "rememberKey": "Schlüssel in diesem Browser merken",
+    "rememberKeyNote": "In localStorage gespeichert — nur zum Aufrufen des Übersetzungsanbieters verwendet",
+    "jsonNotSupported": "Dieses Modell unterstützt möglicherweise keine JSON-Ausgabe — Übersetzung kann fehlschlagen"
   }
 }

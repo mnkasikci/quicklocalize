@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { FileUploader } from '@/components/FileUploader';
 import { TranslationForm } from '@/components/TranslationForm';
 import { ResultsDisplay } from '@/components/ResultsDisplay';
+import { ApiKeyConfig, DEFAULT_BYOAK, type BYOAKConfig } from '@/components/ApiKeyConfig';
 import { useLocale } from '@/context/LocaleContext';
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null);
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [progress, setProgress] = useState<{ completed: number; total: number } | null>(null);
+  const [byoakConfig, setByoakConfig] = useState<BYOAKConfig>(DEFAULT_BYOAK);
   const { t } = useLocale();
 
   const handleFileUpload = (file: File) => {
@@ -37,6 +39,16 @@ export default function Home() {
       const text = await uploadedFile.text();
       const fileContent = JSON.parse(text);
 
+      const byoak =
+        byoakConfig.enabled && byoakConfig.apiKey && byoakConfig.modelId
+          ? {
+              provider: byoakConfig.provider,
+              apiKey: byoakConfig.apiKey,
+              modelId: byoakConfig.modelId,
+              contextLength: byoakConfig.contextLength,
+            }
+          : undefined;
+
       const response = await fetch('/api/translate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -45,6 +57,7 @@ export default function Home() {
           context: formData.context,
           targetLanguage: formData.targetLanguage,
           fileFormat: 'json',
+          byoak,
         }),
       });
 
@@ -119,6 +132,8 @@ export default function Home() {
               </p>
             )}
           </div>
+
+          <ApiKeyConfig value={byoakConfig} onChange={setByoakConfig} disabled={isLoading} />
 
           {uploadedFile && (
             <div className="card p-6">

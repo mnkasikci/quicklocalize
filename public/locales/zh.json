@@ -82,5 +82,30 @@
   },
   "language": {
     "select": "选择语言"
+  },
+  "byoak": {
+    "toggle": "使用你自己的 API 密钥",
+    "toggleHint": "更好的速率限制与模型访问",
+    "active": "已启用",
+    "provider": "提供商",
+    "apiKey": "API 密钥",
+    "apiKeyPlaceholder": "粘贴你的 API 密钥",
+    "showKey": "显示密钥",
+    "hideKey": "隐藏密钥",
+    "model": "模型",
+    "modelHint": "在上方输入 API 密钥以加载可用模型",
+    "modelLoading": "正在加载模型...",
+    "modelError": "无法加载模型",
+    "modelErrorFallback": "手动输入模型 ID：",
+    "selectModel": "选择模型",
+    "modelCustom": "自定义模型...",
+    "customModelPlaceholder": "例如 gpt-4o",
+    "contextLength": "上下文窗口",
+    "contextLengthUnit": "令牌",
+    "contextWarning": "更改此项可能导致某些模型失败 —",
+    "contextReset": "使用推荐值",
+    "rememberKey": "在此浏览器中记住密钥",
+    "rememberKeyNote": "存储在 localStorage 中 — 仅用于调用翻译提供商",
+    "jsonNotSupported": "此模型可能不支持 JSON 输出 — 翻译可能失败"
   }
 }

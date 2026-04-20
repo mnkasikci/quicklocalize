@@ -82,5 +82,30 @@
   },
   "language": {
     "select": "اختر اللغة"
+  },
+  "byoak": {
+    "toggle": "استخدام مفتاح API الخاص بك",
+    "toggleHint": "حدود معدل أفضل وإتاحة للنماذج",
+    "active": "نشط",
+    "provider": "المزوّد",
+    "apiKey": "مفتاح API",
+    "apiKeyPlaceholder": "الصق مفتاح API",
+    "showKey": "إظهار المفتاح",
+    "hideKey": "إخفاء المفتاح",
+    "model": "النموذج",
+    "modelHint": "أدخل مفتاح API أعلاه لتحميل النماذج المتاحة",
+    "modelLoading": "جارٍ تحميل النماذج...",
+    "modelError": "تعذر تحميل النماذج",
+    "modelErrorFallback": "أدخل معرّف النموذج يدويًا:",
+    "selectModel": "اختر نموذجًا",
+    "modelCustom": "نموذج مخصص...",
+    "customModelPlaceholder": "مثال: gpt-4o",
+    "contextLength": "نافذة السياق",
+    "contextLengthUnit": "رموز",
+    "contextWarning": "قد يؤدي تغيير ذلك إلى فشل بعض النماذج —",
+    "contextReset": "استخدم الموصى به",
+    "rememberKey": "تذكّر المفتاح في هذا المتصفح",
+    "rememberKeyNote": "محفوظ في localStorage — يُستخدم فقط لاستدعاء مزوّد الترجمة",
+    "jsonNotSupported": "قد لا يدعم هذا النموذج مخرجات JSON — قد تفشل الترجمة"
   }
 }

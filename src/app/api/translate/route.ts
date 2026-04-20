@@ -1,15 +1,39 @@
 import * as Sentry from '@sentry/cloudflare';
 import { NextRequest, NextResponse } from 'next/server';
 import { createGroq } from '@ai-sdk/groq';
+import { createOpenAI } from '@ai-sdk/openai';
+import { createAnthropic } from '@ai-sdk/anthropic';
 import { breakdown, runBatches, combine } from '@/lib/translate';
+import type { LanguageModel } from 'ai';
 
 export const runtime = 'edge';
+
+interface BYOAKPayload {
+  provider: 'openai' | 'anthropic' | 'groq';
+  apiKey: string;
+  modelId: string;
+  contextLength: number;
+}
 
 interface TranslateRequest {
   file: Record<string, any>;
   context: string;
   targetLanguage: string;
   fileFormat: 'json';
+  byoak?: BYOAKPayload;
+}
+
+function resolveModel(byoak?: BYOAKPayload): LanguageModel {
+  if (byoak?.apiKey && byoak?.modelId) {
+    switch (byoak.provider) {
+      case 'openai':     return createOpenAI({ apiKey: byoak.apiKey })(byoak.modelId);
+      case 'anthropic':  return createAnthropic({ apiKey: byoak.apiKey })(byoak.modelId);
+      case 'groq':       return createGroq({ apiKey: byoak.apiKey })(byoak.modelId);
+    }
+  }
+  const groqApiKey = process.env.GROQ_API_KEY;
+  if (!groqApiKey) throw new Error('Missing AI configuration env vars');
+  return createGroq({ apiKey: groqApiKey })('llama-3.3-70b-versatile');
 }
 
 export function POST(request: NextRequest) {
@@ -24,21 +48,20 @@ export function POST(request: NextRequest) {
   (async () => {
     try {
       const body: TranslateRequest = await request.json();
-      const { file, context, targetLanguage, fileFormat } = body;
+      const { file, context, targetLanguage, fileFormat, byoak } = body;
 
       if (!file || !context || !targetLanguage) {
         send({ type: 'error', error: 'Missing required fields', status: 400 });
         return;
       }
 
-      const groqApiKey = process.env.GROQ_API_KEY;
-      if (!groqApiKey) {
-        send({ type: 'error', error: 'Missing AI configuration env vars', status: 500 });
+      let model: LanguageModel;
+      try {
+        model = resolveModel(byoak);
+      } catch (e) {
+        send({ type: 'error', error: String(e), status: 500 });
         return;
       }
-
-      const groq = createGroq({ apiKey: groqApiKey });
-      const model = groq('llama-3.3-70b-versatile');
 
       const systemPrompt = `You are a professional localization expert. Translate the JSON values to ${targetLanguage}.
 

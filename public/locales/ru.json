@@ -82,5 +82,30 @@
   },
   "language": {
     "select": "Выберите язык"
+  },
+  "byoak": {
+    "toggle": "Использовать свой API‑ключ",
+    "toggleHint": "Лучше лимиты и доступ к моделям",
+    "active": "Активно",
+    "provider": "Провайдер",
+    "apiKey": "API‑ключ",
+    "apiKeyPlaceholder": "Вставьте свой API‑ключ",
+    "showKey": "Показать ключ",
+    "hideKey": "Скрыть ключ",
+    "model": "Модель",
+    "modelHint": "Введите API‑ключ выше, чтобы загрузить доступные модели",
+    "modelLoading": "Загрузка моделей...",
+    "modelError": "Не удалось загрузить модели",
+    "modelErrorFallback": "Введите ID модели вручную:",
+    "selectModel": "Выберите модель",
+    "modelCustom": "Пользовательская модель...",
+    "customModelPlaceholder": "напр. gpt-4o",
+    "contextLength": "Окно контекста",
+    "contextLengthUnit": "токены",
+    "contextWarning": "Изменение может привести к сбоям с некоторыми моделями —",
+    "contextReset": "использовать рекомендованное",
+    "rememberKey": "Запомнить ключ в этом браузере",
+    "rememberKeyNote": "Хранится в localStorage — используется только для вызова провайдера перевода",
+    "jsonNotSupported": "Эта модель может не поддерживать вывод JSON — перевод может завершиться ошибкой"
   }
 }

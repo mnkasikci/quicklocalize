@@ -82,5 +82,30 @@
   },
   "language": {
     "select": "Select language"
+  },
+  "byoak": {
+    "toggle": "Use your own API key",
+    "toggleHint": "Better rate limits & model access",
+    "active": "Active",
+    "provider": "Provider",
+    "apiKey": "API Key",
+    "apiKeyPlaceholder": "Paste your API key",
+    "showKey": "Show key",
+    "hideKey": "Hide key",
+    "model": "Model",
+    "modelHint": "Enter your API key above to load available models",
+    "modelLoading": "Loading models...",
+    "modelError": "Could not load models",
+    "modelErrorFallback": "Enter the model ID manually:",
+    "selectModel": "Select a model",
+    "modelCustom": "Custom model...",
+    "customModelPlaceholder": "e.g. gpt-4o",
+    "contextLength": "Context window",
+    "contextLengthUnit": "tokens",
+    "contextWarning": "Changing this may cause failures with some models —",
+    "contextReset": "use recommended",
+    "rememberKey": "Remember key in this browser",
+    "rememberKeyNote": "Stored in localStorage — used only to call the translation provider",
+    "jsonNotSupported": "This model may not support JSON output — translation may fail"
   }
 }

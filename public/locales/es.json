@@ -82,5 +82,30 @@
   },
   "language": {
     "select": "Seleccionar idioma"
+  },
+  "byoak": {
+    "toggle": "Usa tu propia clave API",
+    "toggleHint": "Mejores límites de tasa y acceso a modelos",
+    "active": "Activo",
+    "provider": "Proveedor",
+    "apiKey": "Clave API",
+    "apiKeyPlaceholder": "Pega tu clave API",
+    "showKey": "Mostrar clave",
+    "hideKey": "Ocultar clave",
+    "model": "Modelo",
+    "modelHint": "Ingresa tu clave API arriba para cargar los modelos disponibles",
+    "modelLoading": "Cargando modelos...",
+    "modelError": "No se pudieron cargar los modelos",
+    "modelErrorFallback": "Introduce el ID del modelo manualmente:",
+    "selectModel": "Selecciona un modelo",
+    "modelCustom": "Modelo personalizado...",
+    "customModelPlaceholder": "p. ej. gpt-4o",
+    "contextLength": "Ventana de contexto",
+    "contextLengthUnit": "tokens",
+    "contextWarning": "Cambiar esto puede causar fallos con algunos modelos —",
+    "contextReset": "usar el recomendado",
+    "rememberKey": "Recordar clave en este navegador",
+    "rememberKeyNote": "Guardada en localStorage — usada solo para llamar al proveedor de traducción",
+    "jsonNotSupported": "Este modelo puede no admitir salida JSON — la traducción puede fallar"
   }
 }
