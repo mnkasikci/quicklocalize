@@ -75,7 +75,7 @@ export default function Home() {
       </section>
 
       <section className="grid md:grid-cols-2 gap-8 items-start">
-        <div className="space-y-6">
+        <div className={`space-y-6 transition-opacity ${isLoading ? 'opacity-50 pointer-events-none' : ''}`}>
           <div className="card p-6">
             <h2 className="text-xl font-semibold mb-4">{t('steps.upload')}</h2>
             <FileUploader onFileUpload={handleFileUpload} />
@@ -107,7 +107,7 @@ export default function Home() {
               <ResultsDisplay result={translationResult} />
             </div>
           )}
-          {!translationResult && uploadedFile && hasSubmitted && (
+          {!translationResult && isLoading && (
             <div className="card p-6 text-center text-slate-400">
               <p>{t('status.awaitingTitle')}</p>
               <p className="text-sm mt-2">{t('status.awaitingHint')}</p>

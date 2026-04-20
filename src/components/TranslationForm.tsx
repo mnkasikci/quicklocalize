@@ -85,7 +85,8 @@ export function TranslationForm({ onTranslate, isLoading = false }: TranslationF
                 key={tmpl.labelKey}
                 type="button"
                 onClick={() => setContext(tmpl.value)}
-                className="text-left text-xs px-3 py-2 bg-slate-700/30 hover:bg-slate-700/60 border border-slate-600 rounded transition"
+                disabled={isLoading}
+                className="text-left text-xs px-3 py-2 bg-slate-700/30 hover:bg-slate-700/60 border border-slate-600 rounded transition disabled:cursor-not-allowed"
               >
                 {t(tmpl.labelKey)}
               </button>
